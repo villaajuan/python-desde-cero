@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 6 — Listas en Python</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2e;--panel2:#17223b;--text:#eaf0ff;--muted:#aab7d4;--cyan:#63e6e2;--purple:#b6a0ff;--yellow:#ffd166;--green:#8ce99a;--red:#ff8787}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#202750 0,transparent 35%),var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}
+header{padding:56px 20px 38px;text-align:center;background:linear-gradient(135deg,#141d38dd,#101426dd);border-bottom:1px solid #34405d}
+.kicker{color:var(--cyan);letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;font-weight:800}
+h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.1;margin:12px 0}header p{max-width:760px;margin:16px auto;color:var(--muted);font-size:1.1rem}
+main{max-width:1050px;margin:auto;padding:24px 18px 70px}.card{background:linear-gradient(145deg,var(--panel),#101729);border:1px solid #293653;border-radius:20px;padding:24px;margin:20px 0;box-shadow:0 12px 35px #0002}
+h2{color:var(--cyan);margin-top:0;font-size:1.6rem}h3{color:var(--purple)}p{margin:.65em 0}.muted{color:var(--muted)}
+.code{position:relative;background:#070b14;border:1px solid #2a3550;border-radius:14px;padding:18px;overflow:auto;color:#d8e4ff;font: .95rem/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre}
+.kw{color:#c4a7ff}.str{color:#a5d6a7}.num{color:#ffd166}.comment{color:#8290aa}
+button{border:0;border-radius:10px;padding:10px 15px;background:var(--cyan);color:#07121b;font-weight:800;cursor:pointer}button:hover{filter:brightness(1.08)}input,select{background:#080e1b;color:var(--text);border:1px solid #43516f;border-radius:9px;padding:10px;font:inherit;max-width:100%}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.output{margin-top:12px;padding:14px;border-radius:10px;background:#080e1b;border:1px dashed #465577;min-height:48px;white-space:pre-wrap}
+.pill{display:inline-block;background:#23314e;color:var(--cyan);border-radius:99px;padding:4px 10px;font-size:.82rem;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.mini{background:var(--panel2);padding:17px;border-radius:14px;border:1px solid #2a3958}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:11px;border-bottom:1px solid #34405d}th{color:var(--yellow)}
+.quizq{padding:15px;background:#0b1222;border-radius:12px;margin:13px 0}.feedback{font-weight:700;margin-top:8px}.good{color:var(--green)}.bad{color:var(--red)}
+footer{text-align:center;color:var(--muted);padding:30px}
+@media(max-width:600px){.card{padding:18px}.code{font-size:.85rem}}
+</style>
+</head>
+<body>
+<header>
+<div class="kicker">Python desde cero · Clase 06</div>
+<h1>Listas en Python</h1>
+<p>Aprende a guardar varios datos en una sola variable, consultar elementos, modificarlos y recorrer una lista con un bucle.</p>
+<div class="row" style="justify-content:center"><span class="pill">Colecciones</span><span class="pill">Índices</span><span class="pill">Métodos</span><span class="pill">Práctica interactiva</span></div>
+</header>
+<main>
+<section class="card">
+<h2>🎯 Objetivos de hoy</h2>
+<div class="grid">
+<div class="mini"><h3>1. Crear</h3><p>Construir listas usando corchetes <code>[]</code>.</p></div>
+<div class="mini"><h3>2. Acceder</h3><p>Encontrar elementos con índices que empiezan en cero.</p></div>
+<div class="mini"><h3>3. Cambiar</h3><p>Agregar, eliminar y actualizar elementos.</p></div>
+<div class="mini"><h3>4. Recorrer</h3><p>Usar <code>for</code> para trabajar con cada elemento.</p></div>
+</div>
+</section>
+<section class="card">
+<h2>1. ¿Qué es una lista?</h2>
+<p>Una <strong>lista</strong> es una colección ordenada de elementos. Imagínala como una fila de casillas: cada casilla guarda un dato y tiene una posición.</p>
+<div class="code">frutas = ["manzana", "pera", "uva"]
+numeros = [10, 20, 30, 40]
+mezcla = ["Ana", 21, True]</div>
+<p>Las listas se escriben entre corchetes <code>[]</code> y sus elementos se separan con comas. Pueden guardar textos, números, valores booleanos e incluso otros tipos de datos.</p>
+<div class="grid">
+<div class="mini"><span class="pill">Índice 0</span><h3>manzana</h3><p class="muted">Primer elemento</p></div>
+<div class="mini"><span class="pill">Índice 1</span><h3>pera</h3><p class="muted">Segundo elemento</p></div>
+<div class="mini"><span class="pill">Índice 2</span><h3>uva</h3><p class="muted">Tercer elemento</p></div>
+</div>
+<div class="code">frutas = ["manzana", "pera", "uva"]
+print(frutas[0])  <span class="comment"># manzana</span>
+print(frutas[2])  <span class="comment"># uva</span>
+print(frutas[-1]) <span class="comment"># uva: último elemento</span></div>
+<p><strong>Ojo:</strong> el índice empieza en <code>0</code>, no en <code>1</code>. Un índice que no existe produce un <code>IndexError</code>.</p>
+</section>
+<section class="card">
+<h2>2. Consultar y medir</h2>
+<div class="code">colores = ["azul", "rojo", "verde"]
+print(len(colores))       <span class="comment"># 3</span>
+print("rojo" in colores)  <span class="comment"># True</span>
+print(colores.index("verde")) <span class="comment"># 2</span></div>
+<table><thead><tr><th>Función / operador</th><th>¿Qué hace?</th></tr></thead><tbody>
+<tr><td><code>len(lista)</code></td><td>Devuelve cuántos elementos hay.</td></tr>
+<tr><td><code>elemento in lista</code></td><td>Comprueba si un elemento está presente.</td></tr>
+<tr><td><code>lista[indice]</code></td><td>Obtiene el elemento de esa posición.</td></tr>
+<tr><td><code>lista[indice] = valor</code></td><td>Reemplaza el elemento de esa posición.</td></tr>
+</tbody></table>
+</section>
+<section class="card">
+<h2>3. Agregar, quitar y ordenar</h2>
+<div class="code">tareas = ["estudiar", "practicar"]
+tareas.append("repasar")       <span class="comment"># agrega al final</span>
+tareas.insert(1, "leer")       <span class="comment"># inserta en índice 1</span>
+tareas.remove("estudiar")      <span class="comment"># quita por valor</span>
+ultimo = tareas.pop()          <span class="comment"># quita y devuelve el último</span>
+tareas.sort()                  <span class="comment"># ordena la lista</span></div>
+<div class="grid">
+<div class="mini"><h3><code>append(x)</code></h3><p>Agrega <code>x</code> al final.</p></div>
+<div class="mini"><h3><code>insert(i, x)</code></h3><p>Inserta <code>x</code> en la posición <code>i</code>.</p></div>
+<div class="mini"><h3><code>remove(x)</code></h3><p>Elimina la primera coincidencia de <code>x</code>.</p></div>
+<div class="mini"><h3><code>pop()</code></h3><p>Elimina y devuelve el último elemento.</p></div>
+</div>
+<p class="muted">Consejo: <code>sort()</code> modifica la lista original. Para ordenar sin modificarla, puedes usar <code>sorted(lista)</code>.</p>
+</section>
+<section class="card">
+<h2>4. Recorrer una lista con <code>for</code></h2>
+<div class="code">nombres = ["Lina", "Mateo", "Sara"]
+
+for nombre in nombres:
+    print("Hola", nombre)</div>
+<p>El bucle toma un elemento a la vez. En cada vuelta, la variable <code>nombre</code> representa el elemento actual.</p>
+<h3>Lista + bucle = poder</h3>
+<div class="code">precios = [2000, 3500, 1200]
+total = 0
+
+for precio in precios:
+    total = total + precio
+
+print("Total:", total)  <span class="comment"># 6700</span></div>
+</section>
+<section class="card">
+<h2>🧪 Laboratorio interactivo: administra tu lista</h2>
+<p class="muted">Prueba agregar elementos, eliminar el último, cambiar uno y ver cómo cambian los índices.</p>
+<div class="row"><input id="newItem" placeholder="Escribe un elemento"><button onclick="addItem()">Agregar</button><button onclick="popItem()">Quitar último</button></div>
+<div class="row" style="margin-top:12px"><input id="indexInput" type="number" min="0" placeholder="Índice"><input id="replaceInput" placeholder="Nuevo valor"><button onclick="replaceItem()">Reemplazar</button></div>
+<div id="listView" class="output"></div><div id="labMessage" class="muted" style="margin-top:8px"></div>
+</section>
+<section class="card">
+<h2>🧠 Mini reto: ¿qué imprime?</h2>
+<div class="code">animales = ["gato", "perro", "pez"]
+animales.append("ave")
+print(animales[1])
+print(len(animales))</div>
+<div class="row"><input id="challenge" placeholder="Escribe las dos respuestas"><button onclick="checkChallenge()">Comprobar</button></div>
+<div id="challengeFeedback" class="feedback"></div>
+</section>
+<section class="card">
+<h2>📝 Evaluación rápida</h2>
+<div id="quiz">
+<div class="quizq"><p><strong>1.</strong> ¿Con qué símbolo se escribe una lista?</p><label><input type="radio" name="q1" value="a"> ( )</label><br><label><input type="radio" name="q1" value="b"> [ ]</label><br><label><input type="radio" name="q1" value="c"> { }</label></div>
+<div class="quizq"><p><strong>2.</strong> ¿Cuál es el índice del primer elemento?</p><label><input type="radio" name="q2" value="a"> 1</label><br><label><input type="radio" name="q2" value="b"> -1</label><br><label><input type="radio" name="q2" value="c"> 0</label></div>
+<div class="quizq"><p><strong>3.</strong> ¿Qué método agrega un elemento al final?</p><label><input type="radio" name="q3" value="a"> append()</label><br><label><input type="radio" name="q3" value="b"> remove()</label><br><label><input type="radio" name="q3" value="c"> pop()</label></div>
+<div class="quizq"><p><strong>4.</strong> ¿Qué devuelve <code>len([4, 8, 12])</code>?</p><label><input type="radio" name="q4" value="a"> 2</label><br><label><input type="radio" name="q4" value="b"> 3</label><br><label><input type="radio" name="q4" value="c"> 4</label></div>
+</div>
+<button onclick="gradeQuiz()">Calificar</button> <button onclick="resetQuiz()" style="background:#b6a0ff">Reiniciar</button>
+<div id="quizResult" class="output"></div>
+</section>
+<section class="card">
+<h2>🏁 Tarea para entregar</h2>
+<ol>
+<li>Crea una lista llamada <code>materias</code> con cinco materias.</li>
+<li>Imprime la primera y la última materia.</li>
+<li>Agrega una materia nueva con <code>append()</code>.</li>
+<li>Reemplaza el segundo elemento por otra materia.</li>
+<li>Usa un <code>for</code> para imprimir todas las materias.</li>
+<li>Calcula cuántas materias hay usando <code>len()</code>.</li>
+</ol>
+<p><strong>Extra:</strong> crea una lista de cinco números y calcula la suma total recorriéndola con un bucle.</p>
+</section>
+<section class="card">
+<h2>📌 Resumen de bolsillo</h2>
+<div class="code">lista = ["A", "B", "C"]
+lista[0]          <span class="comment"># acceder</span>
+lista[1] = "X"    <span class="comment"># modificar</span>
+lista.append("D") <span class="comment"># agregar</span>
+lista.remove("A") <span class="comment"># eliminar por valor</span>
+len(lista)        <span class="comment"># contar</span>
+for dato in lista:
+    print(dato)   <span class="comment"># recorrer</span></div>
+<p>Idea clave: una variable guarda un dato; una lista permite guardar muchos datos ordenados bajo un mismo nombre.</p>
+</section>
+<footer>CLASE 06 · PYTHON DESDE CERO · Sigue practicando: escribir código es aprender a pensar.</footer>
+</main>
+<script>
+let items = ["Python", "Lógica", "Práctica"];
+function renderList(){
+ const el=document.getElementById("listView");
+ el.textContent = items.length ? items.map((v,i)=>`Índice ${i}: ${v}`).join("\\n") : "(lista vacía)";
+}
+function message(t){document.getElementById("labMessage").textContent=t;}
+function addItem(){
+ const input=document.getElementById("newItem"), v=input.value.trim();
+ if(!v){message("Escribe un elemento antes de agregarlo.");return;}
+ items.push(v); input.value=""; renderList(); message(`"${v}" se agregó al final.`);
+}
+function popItem(){
+ if(!items.length){message("La lista ya está vacía.");return;}
+ const v=items.pop(); renderList(); message(`Se eliminó "${v}".`);
+}
+function replaceItem(){
+ const i=Number(document.getElementById("indexInput").value), v=document.getElementById("replaceInput").value.trim();
+ if(!Number.isInteger(i)||i<0||i>=items.length){message("Ese índice no existe en la lista.");return;}
+ if(!v){message("Escribe el nuevo valor.");return;}
+ const old=items[i];items[i]=v;renderList();message(`Índice ${i}: "${old}" fue reemplazado por "${v}".`);
+}
+function checkChallenge(){
+ const v=document.getElementById("challenge").value.toLowerCase().trim().replace(/\s+/g," ");
+ const ok=["perro 4","perro, 4","perro y 4"].includes(v);
+ const el=document.getElementById("challengeFeedback");
+ el.textContent=ok?"¡Correcto! Imprime perro y luego 4.":"Inténtalo otra vez. Recuerda que el índice 1 es el segundo elemento.";
+ el.className="feedback "+(ok?"good":"bad");
+}
+function gradeQuiz(){
+ const answers={q1:"b",q2:"c",q3:"a",q4:"b"};let score=0;
+ for(const [q,a] of Object.entries(answers)){const selected=document.querySelector(`input[name="${q}"]:checked`);if(selected&&selected.value===a)score++;}
+ document.getElementById("quizResult").textContent=`Resultado: ${score} de 4 (${score*25}%). ${score===4?"¡Excelente!":score>=3?"¡Vas bien! Revisa la pregunta que fallaste.":"Repasa la clase y vuelve a intentarlo."}`;
+}
+function resetQuiz(){document.querySelectorAll('#quiz input[type="radio"]').forEach(x=>x.checked=false);document.getElementById("quizResult").textContent="";}
+renderList();
+</script>
+</body>
+</html>

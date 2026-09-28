@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clase 5 — Python: Bucles while y for</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2e;--panel2:#1a2540;--text:#edf2ff;--muted:#a9b7d0;--accent:#68e0cf;--line:#2c3955}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#0b1020,#15132b);color:var(--text);font:16px/1.65 system-ui,Arial}header,main,footer{padding:28px max(18px,calc((100% - 900px)/2))}header{padding-top:48px;padding-bottom:42px;border-bottom:1px solid var(--line)}h1{font-size:clamp(2rem,6vw,3.5rem);line-height:1.1}.eyebrow,h3{color:var(--accent)}.muted{color:var(--muted)}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:clamp(18px,3vw,28px);margin:18px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.tile{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:15px}code{color:#b8f3e8;font-family:Consolas,monospace}pre{white-space:pre-wrap;overflow:auto;background:#080d18;border:1px solid var(--line);border-radius:10px;padding:16px;color:#e5edff}.callout{border-left:4px solid #9b8cff;background:#9b8cff14;padding:12px 15px;margin:15px 0}input,button{font:inherit}input[type=number]{padding:10px;background:#080d18;color:white;border:1px solid var(--line);border-radius:8px;width:100%}label{display:block;margin:8px 0}.btn{background:var(--accent);border:0;border-radius:9px;padding:10px 16px;font-weight:bold;cursor:pointer;margin:8px 5px 0 0}.secondary{background:var(--panel2);color:white;border:1px solid var(--line)}.result{background:var(--panel2);padding:13px;border-radius:10px;margin-top:10px;white-space:pre-wrap;overflow-wrap:anywhere}.good{color:#6ee7a8}.bad{color:#ff8e9b}.q{padding:15px 0;border-bottom:1px solid var(--line)}footer{border-top:1px solid var(--line);color:var(--muted);text-align:center}@media print{body{background:white;color:#111}.card,.tile,pre,.result{background:white;color:#111;box-shadow:none}.interactive{display:none}code{color:#111}}
+</style></head><body>
+<header><div class="eyebrow">PYTHON DESDE CERO · MÓDULO 01</div><h1>Clase 5:<br><span style="color:var(--accent)">Bucles while y for</span></h1><p class="muted">Aprende a repetir instrucciones, recorrer secuencias y automatizar tareas con Python.</p><p class="muted">Nivel principiante · 40–50 minutos · Teoría y práctica</p></header>
+<main>
+<section class="card"><h2>🎯 Objetivos</h2><ul><li>Comprender qué es un bucle.</li><li>Usar <code>while</code> para repetir mientras una condición sea verdadera.</li><li>Usar <code>for</code> para recorrer secuencias.</li><li>Controlar repeticiones con <code>range()</code>.</li><li>Evitar los bucles infinitos.</li></ul></section>
+<section class="card"><h2>1. ¿Qué es un bucle?</h2><p>Un bucle repite instrucciones. En vez de escribir cinco veces lo mismo:</p><pre>print("Hola")
+print("Hola")
+print("Hola")
+print("Hola")
+print("Hola")</pre><p>Podemos escribir:</p><pre>for i in range(5):
+    print("Hola")</pre><p>El resultado es el mismo, con menos código.</p></section>
+<section class="card"><h2>2. El bucle <code>while</code></h2><p><code>while</code> significa “mientras”. Repite el bloque mientras la condición sea verdadera.</p><pre>contador = 1
+
+while contador <= 5:
+    print(contador)
+    contador = contador + 1</pre><p>Salida: <code>1 2 3 4 5</code> (cada número en una línea).</p><ol><li>El contador comienza en 1.</li><li>Python comprueba si <code>contador <= 5</code>.</li><li>Imprime el valor y suma 1.</li><li>Cuando el contador llega a 6, la condición es falsa y termina.</li></ol><div class="callout"><b>¡Cuidado con el bucle infinito!</b> Si olvidas incrementar el contador, la condición puede seguir siendo verdadera para siempre.</div><pre># Incorrecto: puede no terminar
+contador = 1
+while contador <= 5:
+    print(contador)
+    # Falta contador = contador + 1</pre></section>
+<section class="card"><h2>3. El bucle <code>for</code></h2><p><code>for</code> recorre los elementos de una secuencia, como una lista o un rango.</p><pre>for numero in range(1, 6):
+    print(numero)</pre><p>Imprime del 1 al 5. El límite final de <code>range()</code> no se incluye.</p><pre>frutas = ["manzana", "pera", "uva"]
+
+for fruta in frutas:
+    print(fruta)</pre><p>En cada vuelta, la variable <code>fruta</code> toma el siguiente elemento.</p></section>
+<section class="card"><h2>4. Entender <code>range()</code></h2><div class="grid"><div class="tile"><h3><code>range(5)</code></h3>Genera 0, 1, 2, 3, 4.</div><div class="tile"><h3><code>range(1, 6)</code></h3>Genera 1, 2, 3, 4, 5.</div><div class="tile"><h3><code>range(2, 11, 2)</code></h3>Genera 2, 4, 6, 8, 10.</div></div><p>La forma general es <code>range(inicio, fin, paso)</code>. El inicio se incluye, el fin se excluye y el paso indica cuánto avanza cada vuelta.</p></section>
+<section class="card"><h2>5. ¿Cuál bucle elegir?</h2><div class="grid"><div class="tile"><h3>Usa <code>for</code></h3><p>Cuando sabes qué secuencia recorrer o cuántas repeticiones necesitas.</p><pre>for i in range(3):
+    print("Hola")</pre></div><div class="tile"><h3>Usa <code>while</code></h3><p>Cuando quieres repetir mientras una condición siga siendo verdadera.</p><pre>respuesta = ""
+while respuesta != "salir":
+    respuesta = input("Escribe salir: ")</pre></div></div></section>
+<section class="card interactive"><h2>🧮 6. Laboratorio de bucles</h2><p class="muted">Elige un tipo de bucle y un límite para ver la secuencia que generaría.</p><label for="kind">Tipo de bucle</label><select id="kind"><option value="for">for · range()</option><option value="while">while · contador</option></select><label for="limit">Contar hasta (1–30)</label><input id="limit" type="number" min="1" max="30" value="5"><button class="btn" id="run" type="button">Ejecutar simulación</button><div class="result" id="output" aria-live="polite"></div></section>
+<section class="card"><h2>7. Proyecto: tabla de multiplicar</h2><p>Este programa pregunta un número y muestra su tabla del 1 al 10.</p><pre>numero = int(input("¿Qué tabla quieres ver? "))
+
+for i in range(1, 11):
+    resultado = numero * i
+    print(numero, "x", i, "=", resultado)</pre><p>Prueba con el número 7. Después modifica el rango para mostrar solo cinco resultados o llegar hasta el 12.</p></section>
+<section class="card"><h2>8. Controlar bucles: <code>break</code> y <code>continue</code></h2><div class="grid"><div class="tile"><h3><code>break</code></h3><p>Termina el bucle inmediatamente.</p><pre>for n in range(1, 6):
+    if n == 3:
+        break
+    print(n)</pre><p>Imprime 1 y 2.</p></div><div class="tile"><h3><code>continue</code></h3><p>Salta a la siguiente vuelta.</p><pre>for n in range(1, 6):
+    if n == 3:
+        continue
+    print(n)</pre><p>Imprime 1, 2, 4 y 5.</p></div></div></section>
+<section class="card interactive"><h2>9. Examen rápido</h2><form id="quiz">
+<div class="q" data-a="1" data-w="range(5) genera 0, 1, 2, 3 y 4; el 5 queda excluido."><b>1. ¿Qué números genera range(5)?</b><label><input type="radio" name="q0" value="0"> 1, 2, 3, 4, 5</label><label><input type="radio" name="q0" value="1"> 0, 1, 2, 3, 4</label><label><input type="radio" name="q0" value="2"> 0, 1, 2, 3, 4, 5</label></div>
+<div class="q" data-a="2" data-w="while repite mientras su condición sea verdadera."><b>2. ¿Cuándo continúa un while?</b><label><input type="radio" name="q1" value="0"> Solo una vez</label><label><input type="radio" name="q1" value="1"> Cuando la condición es falsa</label><label><input type="radio" name="q1" value="2"> Mientras la condición sea verdadera</label></div>
+<div class="q" data-a="0" data-w="En range(1, 6), el 1 se incluye y el 6 se excluye."><b>3. ¿Qué imprime range(1, 6)?</b><label><input type="radio" name="q2" value="0"> 1, 2, 3, 4, 5</label><label><input type="radio" name="q2" value="1"> 1, 2, 3, 4, 5, 6</label><label><input type="radio" name="q2" value="2"> 0, 1, 2, 3, 4, 5</label></div>
+<div class="q" data-a="1" data-w="Si la condición nunca cambia y sigue siendo verdadera, el bucle puede ser infinito."><b>4. ¿Qué puede causar un bucle infinito?</b><label><input type="radio" name="q3" value="0"> Usar print()</label><label><input type="radio" name="q3" value="1"> No actualizar la condición o variable de control</label><label><input type="radio" name="q3" value="2"> Usar una lista</label></div>
+<div class="q" data-a="2" data-w="break termina el bucle; continue solo salta la vuelta actual."><b>5. ¿Qué instrucción termina el bucle inmediatamente?</b><label><input type="radio" name="q4" value="0"> continue</label><label><input type="radio" name="q4" value="1"> range</label><label><input type="radio" name="q4" value="2"> break</label></div>
+<button class="btn" type="submit">Calificar</button><button class="btn secondary" type="button" id="reset">Reiniciar</button><div id="score"></div></form></section>
+<section class="card"><h2>10. Misiones prácticas</h2><label><input type="checkbox"> Imprimir los números del 1 al 100.</label><label><input type="checkbox"> Mostrar solo los números pares del 2 al 20.</label><label><input type="checkbox"> Crear una cuenta regresiva desde 10 hasta 1.</label><label><input type="checkbox"> Pedir una contraseña hasta que sea correcta (con intentos de prueba).</label><label><input type="checkbox"> Crear las tablas de multiplicar del 1 al 5.</label></section>
+<section class="card"><h2>🧠 Resumen</h2><div class="grid"><div class="tile"><b><code>while</code></b><p>Repite mientras una condición sea verdadera.</p></div><div class="tile"><b><code>for</code></b><p>Recorre elementos o rangos.</p></div><div class="tile"><b><code>break</code> / <code>continue</code></b><p>Termina el bucle / salta una vuelta.</p></div></div><p><b>Idea clave:</b> los bucles automatizan la repetición. Asegúrate de que los bucles <code>while</code> puedan terminar.</p><p class="muted">Próxima clase: listas y colecciones de datos.</p></section>
+</main><footer>Python desde cero · Clase 5 · Material didáctico</footer>
+<script>
+function simulate(){let n=Number(document.getElementById('limit').value),kind=document.getElementById('kind').value,out=document.getElementById('output');if(!Number.isInteger(n)||n<1||n>30){out.textContent='Elige un número entero entre 1 y 30.';return}let arr=[];if(kind==='for'){for(let i=1;i<=n;i++)arr.push(i)}else{let i=1;while(i<=n){arr.push(i);i++}}out.textContent=(kind==='for'?'Simulación de for:':'Simulación de while:')+'\n'+arr.join(' → ')+'\nVueltas: '+arr.length}
+document.getElementById('run').addEventListener('click',simulate);simulate();
+document.getElementById('quiz').addEventListener('submit',e=>{e.preventDefault();let score=0;document.querySelectorAll('.q').forEach(q=>{q.querySelector('.feedback')?.remove();let s=q.querySelector('input:checked'),ok=s&&Number(s.value)===Number(q.dataset.a);if(ok)score++;let d=document.createElement('div');d.className='result '+(ok?'good':'bad');d.textContent=(ok?'✓ Correcto. ':'✗ Repasa. ')+q.dataset.w;q.appendChild(d)});document.getElementById('score').innerHTML='<h3>Resultado: '+score+'/5</h3>'+(score===5?'¡Excelente!':'Repasa y vuelve a intentarlo.')});
+document.getElementById('reset').addEventListener('click',()=>{document.getElementById('quiz').reset();document.querySelectorAll('.q .feedback').forEach(x=>x.remove());document.getElementById('score').textContent=''});
+</script></body></html>

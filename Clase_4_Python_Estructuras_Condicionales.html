@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clase 4 — Python: Condicionales</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2e;--panel2:#1a2540;--text:#edf2ff;--muted:#a9b7d0;--accent:#68e0cf;--line:#2c3955}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#0b1020,#15132b);color:var(--text);font:16px/1.65 system-ui,Arial}header,main,footer{padding:28px max(18px,calc((100% - 900px)/2))}header{padding-top:48px;padding-bottom:42px;border-bottom:1px solid var(--line)}h1{font-size:clamp(2rem,6vw,3.5rem);line-height:1.1}.eyebrow, h3{color:var(--accent)}.muted{color:var(--muted)}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:clamp(18px,3vw,28px);margin:18px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.tile{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:15px}code{color:#b8f3e8;font-family:Consolas,monospace}pre{white-space:pre-wrap;overflow:auto;background:#080d18;border:1px solid var(--line);border-radius:10px;padding:16px;color:#e5edff}.callout{border-left:4px solid #9b8cff;background:#9b8cff14;padding:12px 15px;margin:15px 0}input,button{font:inherit}input[type=number]{padding:10px;background:#080d18;color:white;border:1px solid var(--line);border-radius:8px;width:100%}label{display:block;margin:8px 0}.btn{background:var(--accent);border:0;border-radius:9px;padding:10px 16px;font-weight:bold;cursor:pointer;margin:8px 5px 0 0}.secondary{background:var(--panel2);color:white;border:1px solid var(--line)}.result{background:var(--panel2);padding:13px;border-radius:10px;margin-top:10px}.good{color:#6ee7a8}.bad{color:#ff8e9b}footer{border-top:1px solid var(--line);color:var(--muted);text-align:center}@media print{body{background:white;color:#111}.card,.tile,pre{background:white;color:#111;box-shadow:none}.interactive{display:none}code{color:#111}}
+</style></head><body>
+<header><div class="eyebrow">PYTHON DESDE CERO · MÓDULO 01</div><h1>Clase 4:<br><span style="color:var(--accent)">Estructuras condicionales</span></h1><p class="muted">Aprende a tomar decisiones en tus programas con <code>if</code>, <code>elif</code> y <code>else</code>.</p><p class="muted">Nivel principiante · 30–45 minutos · Teoría y práctica</p></header>
+<main>
+<section class="card"><h2>🎯 Objetivos</h2><ul><li>Comprender qué es una condición.</li><li>Usar <code>if</code>, <code>elif</code> y <code>else</code>.</li><li>Respetar los dos puntos y la indentación.</li><li>Combinar condiciones con operadores lógicos.</li><li>Crear un sistema de calificaciones.</li></ul></section>
+<section class="card"><h2>1. ¿Qué es una condición?</h2><p>Una condición es una pregunta que Python evalúa como verdadera (<code>True</code>) o falsa (<code>False</code>). Por ejemplo: “¿Está lloviendo?”</p><div class="grid"><div class="tile"><b>True · Sí</b><p>Llevar paraguas.</p></div><div class="tile"><b>False · No</b><p>Salir sin paraguas.</p></div></div></section>
+<section class="card"><h2>2. La estructura <code>if</code></h2><p><code>if</code> significa “si”. El bloque se ejecuta únicamente cuando la condición es verdadera.</p><pre>edad = 20
+
+if edad >= 18:
+    print("Eres mayor de edad")</pre><p>Resultado: <code>Eres mayor de edad</code>.</p><div class="callout"><b>Importante:</b> los dos puntos <code>:</code> abren el bloque. La indentación (normalmente cuatro espacios) indica qué instrucciones pertenecen al <code>if</code>.</div></section>
+<section class="card"><h2>3. <code>if</code> y <code>else</code></h2><p><code>else</code> significa “si no”. Se ejecuta cuando la condición del <code>if</code> es falsa.</p><pre>edad = 15
+
+if edad >= 18:
+    print("Puedes ingresar")
+else:
+    print("No puedes ingresar")</pre><p>Como 15 no es mayor o igual a 18, Python muestra “No puedes ingresar”.</p></section>
+<section class="card"><h2>4. <code>if</code>, <code>elif</code> y <code>else</code></h2><p><code>elif</code> significa “si no, si”. Permite evaluar varias condiciones en orden.</p><pre>nota = 4.2
+
+if nota >= 4.5:
+    print("Excelente")
+elif nota >= 3.0:
+    print("Aprobaste")
+else:
+    print("Reprobaste")</pre><p>Resultado: <code>Aprobaste</code>. Python revisa de arriba hacia abajo y ejecuta el primer bloque cuya condición sea verdadera.</p><div class="callout"><b>El orden importa:</b> si revisas primero <code>nota >= 3.0</code>, una nota de 4.8 también cumple esa condición y nunca llega a “Excelente”.</div></section>
+<section class="card"><h2>5. Combinar condiciones</h2><div class="grid"><div class="tile"><h3>and · Y</h3>Ambas condiciones deben ser verdaderas.</div><div class="tile"><h3>or · O</h3>Al menos una condición debe ser verdadera.</div><div class="tile"><h3>not · NO</h3>Invierte el valor lógico.</div></div><pre>edad = 20
+tiene_entrada = True
+
+if edad >= 18 and tiene_entrada:
+    print("Puede entrar")
+else:
+    print("No puede entrar")</pre></section>
+<section class="card interactive"><h2>🧪 6. Prueba los condicionales</h2><p class="muted">Cambia los valores para observar la decisión del programa.</p><label for="age">Edad</label><input id="age" type="number" value="20"><div class="result" id="ageResult"></div><label for="grade">Nota (0 a 5)</label><input id="grade" type="number" value="4.2" min="0" max="5" step=".1"><div class="result" id="gradeResult"></div></section>
+<section class="card"><h2>7. Proyecto: sistema de calificaciones</h2><p>En este ejemplo, 3.0 es la nota mínima para aprobar.</p><pre>nota = float(input("Ingresa tu nota (0 a 5): "))
+
+if nota < 0 or nota > 5:
+    print("Nota fuera de rango")
+elif nota >= 4.5:
+    print("Excelente")
+elif nota >= 3.0:
+    print("Aprobaste")
+else:
+    print("Reprobaste")</pre><ul><li><code>float()</code> convierte la entrada en número decimal.</li><li><code>or</code> comprueba si la nota está fuera del rango.</li><li><code>elif</code> evalúa las categorías restantes.</li></ul></section>
+<section class="card interactive"><h2>8. Examen rápido</h2><form id="quiz">
+<div class="q" data-a="1" data-w="La edad 16 no cumple edad >= 18, así que se ejecuta else."><b>1. Si edad = 16, ¿qué imprime?</b><pre>if edad >= 18:
+    print("A")
+else:
+    print("B")</pre><label><input type="radio" name="q0" value="0"> A</label><label><input type="radio" name="q0" value="1"> B</label></div>
+<div class="q" data-a="2" data-w="elif comprueba otra condición si la anterior fue falsa."><b>2. ¿Para qué sirve elif?</b><label><input type="radio" name="q1" value="0"> Repetir un bucle</label><label><input type="radio" name="q1" value="1"> Definir una variable</label><label><input type="radio" name="q1" value="2"> Comprobar otra condición</label></div>
+<div class="q" data-a="0" data-w="Se usan dos puntos y un bloque indentado."><b>3. ¿Qué necesita una línea if?</b><label><input type="radio" name="q2" value="0"> Dos puntos e indentación</label><label><input type="radio" name="q2" value="1"> Punto y coma obligatorio</label><label><input type="radio" name="q2" value="2"> Nada más</label></div>
+<div class="q" data-a="1" data-w="2.5 no cumple ninguna categoría aprobatoria, así que llega a else."><b>4. En el ejemplo de notas, ¿qué pasa con 2.5?</b><label><input type="radio" name="q3" value="0"> Excelente</label><label><input type="radio" name="q3" value="1"> Reprobaste</label><label><input type="radio" name="q3" value="2"> Nota fuera de rango</label></div>
+<div class="q" data-a="2" data-w="and solo es verdadero cuando ambas condiciones son verdaderas."><b>5. ¿Cuándo es verdadero A and B?</b><label><input type="radio" name="q4" value="0"> Cuando A es verdadera</label><label><input type="radio" name="q4" value="1"> Cuando B es verdadera</label><label><input type="radio" name="q4" value="2"> Cuando A y B son verdaderas</label></div>
+<button class="btn" type="submit">Calificar</button><button class="btn secondary" type="button" id="reset">Reiniciar</button><div id="score"></div></form></section>
+<section class="card"><h2>9. Misiones prácticas</h2><label><input type="checkbox"> Pedir una edad e indicar si es mayor de edad.</label><label><input type="checkbox"> Pedir un número e indicar si es positivo, negativo o cero.</label><label><input type="checkbox"> Crear un clasificador de notas de 0 a 5.</label><label><input type="checkbox"> Validar un usuario y contraseña de ejemplo.</label></section>
+<section class="card"><h2>🧠 Resumen</h2><div class="grid"><div class="tile"><b><code>if</code></b><p>Si la condición es verdadera.</p></div><div class="tile"><b><code>elif</code></b><p>Si la anterior fue falsa, prueba otra.</p></div><div class="tile"><b><code>else</code></b><p>Si ninguna anterior se cumplió.</p></div></div><p><b>Idea clave:</b> las condiciones permiten que un programa tome caminos diferentes según los datos.</p><p class="muted">Próxima clase: bucles <code>while</code> y <code>for</code>.</p></section>
+</main><footer>Python desde cero · Clase 4 · Material didáctico</footer>
+<script>
+const age=document.getElementById('age'),grade=document.getElementById('grade');
+function update(){document.getElementById('ageResult').textContent=age.value===''?'Ingresa una edad.':Number(age.value)>=18?'True → Puede ingresar.':'False → No puede ingresar.';
+if(grade.value===''){document.getElementById('gradeResult').textContent='Ingresa una nota.';return}
+let n=Number(grade.value);document.getElementById('gradeResult').textContent=n<0||n>5?'Nota fuera de rango':n>=4.5?'Excelente':n>=3?'Aprobaste':'Reprobaste'}
+age.addEventListener('input',update);grade.addEventListener('input',update);update();
+document.getElementById('quiz').addEventListener('submit',e=>{e.preventDefault();let score=0;document.querySelectorAll('.q').forEach(q=>{q.querySelector('.feedback')?.remove();let s=q.querySelector('input:checked'),ok=s&&Number(s.value)===Number(q.dataset.a);if(ok)score++;let d=document.createElement('div');d.className='result '+(ok?'good':'bad');d.textContent=(ok?'✓ Correcto. ':'✗ Revisa. ')+q.dataset.w;q.appendChild(d)});document.getElementById('score').innerHTML='<h3>Resultado: '+score+'/5</h3>'+(score===5?'¡Excelente!':'Repasa las respuestas e inténtalo de nuevo.')});
+document.getElementById('reset').addEventListener('click',()=>{document.getElementById('quiz').reset();document.querySelectorAll('.q .feedback').forEach(x=>x.remove());document.getElementById('score').textContent=''});
+</script></body></html>
