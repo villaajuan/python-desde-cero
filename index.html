@@ -6,97 +6,209 @@
     <title>Python desde Cero</title>
 
     <style>
-        /* Fondo dinámico con animación de degradado en movimiento */
-        @keyframes gradientBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(-45deg, #0b1020, #0f172a, #1e1b4b, #020617);
-            background-size: 400% 400%;
-            animation: gradientBackground 12s ease infinite;
+            background-color: #030712;
             color: #edf2ff;
-            max-width: 900px;
-            margin: auto;
-            padding: 50px 20px;
             min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Canvas de fondo Matrix interactivo */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #030712;
+        }
+
+        /* Contenedor principal estilo Glassmorphism */
+        .container {
+            width: 100%;
+            max-width: 850px;
+            padding: 40px 20px;
+            z-index: 1;
+            position: relative;
         }
 
         h1 {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(104, 224, 207, 0.4);
+            font-size: 2.8rem;
+            margin-bottom: 8px;
+            color: #ffffff;
+            text-shadow: 0 0 25px rgba(104, 224, 207, 0.6);
+            letter-spacing: 1px;
         }
 
         p {
             text-align: center;
             color: #94a3b8;
             font-size: 1.1rem;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
         }
 
-        /* Estilo de los botones con efectos de luces y neón */
+        /* Botones interactivos con efecto neón y cristal */
         .clase {
             display: block;
-            background: rgba(18, 26, 46, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(104, 224, 207, 0.2);
-            border-radius: 14px;
+            background: rgba(10, 15, 30, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(104, 224, 207, 0.25);
+            border-radius: 16px;
             padding: 22px 25px;
             margin: 18px 0;
             color: #68e0cf;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Efecto al pasar el cursor (Hover con luces neón y movimiento) */
+        /* Línea brillante decorativa interna en los botones */
+        .clase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(104, 224, 207, 0.15), transparent);
+            transition: 0.5s;
+        }
+
+        .clase:hover::before {
+            left: 100%;
+        }
+
+        /* Efecto de luces al pasar el cursor (Hover god) */
         .clase:hover {
-            background: rgba(26, 37, 64, 0.9);
+            background: rgba(18, 30, 55, 0.85);
             border-color: #68e0cf;
             color: #ffffff;
-            transform: translateY(-5px) scale(1.01);
-            box-shadow: 0 10px 30px rgba(104, 224, 207, 0.3), 0 0 20px rgba(104, 224, 207, 0.2);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(104, 224, 207, 0.35), 0 0 25px rgba(52, 211, 153, 0.3);
         }
     </style>
 </head>
 
 <body>
 
-    <h1>🐍 Python desde Cero</h1>
+    <!-- Fondo dinámico Matrix con canvas -->
+    <canvas id="matrix-canvas"></canvas>
 
-    <p>Plataforma de aprendizaje interactivo</p>
+    <div class="container">
+        <h1>🐍 Python desde Cero</h1>
+        <p>Terminal Interactiva & Código en Cascada</p>
 
-    <a class="clase" href="Libro_interactivo_Python_Clase_1.html">
-        📖 Clase 1 — Introducción a Python
-    </a>
+        <a class="clase" href="Libro_interactivo_Python_Clase_1.html">
+            📖 Clase 1 — Introducción a Python
+        </a>
 
-    <a class="clase" href="Libro_interactivo_Python_Clase_2.html">
-        ⚡ Clase 2 — Conceptos básicos
-    </a>
+        <a class="clase" href="Libro_interactivo_Python_Clase_2.html">
+            ⚡ Clase 2 — Conceptos básicos
+        </a>
 
-    <a class="clase" href="Libro_interactivo_Python_Clase_3.html">
-        ⚙️ Clase 3 — Operadores y lógica
-    </a>
+        <a class="clase" href="Libro_interactivo_Python_Clase_3.html">
+            ⚙️ Clase 3 — Operadores y lógica
+        </a>
 
-    <a class="clase" href="Clase_4_Python_Estructuras_Condicionales.html">
-        🔀 Clase 4 — Estructuras condicionales
-    </a>
+        <a class="clase" href="Clase_4_Python_Estructuras_Condicionales.html">
+            🔀 Clase 4 — Estructuras condicionales
+        </a>
 
-    <a class="clase" href="Clase_5_Python_Bucles_While_For.html">
-        🔄 Clase 5 — Bucles while y for
-    </a>
+        <a class="clase" href="Clase_5_Python_Bucles_While_For.html">
+            🔄 Clase 5 — Bucles while y for
+        </a>
 
-    <a class="clase" href="Clase_6_Python_Listas.html">
-        📦 Clase 6 — Listas en Python
-    </a>
+        <a class="clase" href="Clase_6_Python_Listas.html">
+            📦 Clase 6 — Listas en Python
+        </a>
+    </div>
 
+    <!-- Script de JavaScript para la lluvia Matrix interactiva con el cursor -->
+    <script>
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Caracteres inspirados en código, matemáticas y sintaxis de Python
+        const chars = '01PYTHON{}[]()def->+=*#<>importprintlambda__';
+        const fontSize = 16;
+        let columns = Math.floor(canvas.width / fontSize);
+        let drops = [];
+
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+
+        // Posición del cursor para la interactividad
+        let mouseX = -1000;
+        let mouseY = -1000;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function drawMatrix() {
+            // Fondo semitransparente para generar el rastro de la lluvia estilo Matrix
+            ctx.fillStyle = 'rgba(3, 7, 18, 0.12)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+
+                // Interactividad: Si el cursor está cerca de la línea, brilla en cian/blanco intenso
+                const distance = Math.hypot(x - mouseX, y - mouseY);
+                if (distance < 100) {
+                    ctx.fillStyle = '#ffffff';
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = '#68e0cf';
+                } else {
+                    ctx.fillStyle = '#10b981'; // Verde matriz clásico mezclado con tonos de Python
+                    ctx.shadowBlur = 5;
+                    ctx.shadowColor = '#059669';
+                }
+
+                ctx.fillText(text, x, y);
+                ctx.shadowBlur = 0; // Reset de sombra
+
+                if (y > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 50);
+    </script>
 </body>
 </html>
-
