@@ -6,37 +6,63 @@
     <title>Python desde Cero</title>
 
     <style>
+        /* Fondo dinámico con animación de degradado en movimiento */
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #0b1020;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #0b1020, #0f172a, #1e1b4b, #020617);
+            background-size: 400% 400%;
+            animation: gradientBackground 12s ease infinite;
             color: #edf2ff;
             max-width: 900px;
             margin: auto;
-            padding: 40px 20px;
+            padding: 50px 20px;
+            min-height: 100vh;
         }
 
         h1 {
             text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(104, 224, 207, 0.4);
         }
 
         p {
             text-align: center;
-            color: #a9b7d0;
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
         }
 
+        /* Estilo de los botones con efectos de luces y neón */
         .clase {
             display: block;
-            background: #121a2e;
-            border: 1px solid #2c3955;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 15px 0;
+            background: rgba(18, 26, 46, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(104, 224, 207, 0.2);
+            border-radius: 14px;
+            padding: 22px 25px;
+            margin: 18px 0;
             color: #68e0cf;
+            font-size: 1.1rem;
+            font-weight: 600;
             text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
+        /* Efecto al pasar el cursor (Hover con luces neón y movimiento) */
         .clase:hover {
-            background: #1a2540;
+            background: rgba(26, 37, 64, 0.9);
+            border-color: #68e0cf;
+            color: #ffffff;
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 10px 30px rgba(104, 224, 207, 0.3), 0 0 20px rgba(104, 224, 207, 0.2);
         }
     </style>
 </head>
@@ -45,37 +71,32 @@
 
     <h1>🐍 Python desde Cero</h1>
 
-    <p>Clases interactivas de Python</p>
+    <p>Plataforma de aprendizaje interactivo</p>
 
-    <a class="clase"
-       href="Libro_interactivo_Python_Clase_1.html">
-        Clase 1 — Introducción a Python
+    <a class="clase" href="Libro_interactivo_Python_Clase_1.html">
+        📖 Clase 1 — Introducción a Python
     </a>
 
-    <a class="clase"
-       href="Libro_interactivo_Python_Clase_2.html">
-        Clase 2 — Conceptos básicos
+    <a class="clase" href="Libro_interactivo_Python_Clase_2.html">
+        ⚡ Clase 2 — Conceptos básicos
     </a>
 
-    <a class="clase"
-       href="Clase_3_Python_Operadores_y_Logica.html">
-        Clase 3 — Operadores y lógica
+    <a class="clase" href="Libro_interactivo_Python_Clase_3.html">
+        ⚙️ Clase 3 — Operadores y lógica
     </a>
 
-    <a class="clase"
-       href="Clase_4_Python_Estructuras_Condicionales.html">
-        Clase 4 — Estructuras condicionales
+    <a class="clase" href="Clase_4_Python_Estructuras_Condicionales.html">
+        🔀 Clase 4 — Estructuras condicionales
     </a>
 
-    <a class="clase"
-       href="Clase_5_Python_Bucles_While_For.html">
-        Clase 5 — Bucles while y for
+    <a class="clase" href="Clase_5_Python_Bucles_While_For.html">
+        🔄 Clase 5 — Bucles while y for
     </a>
 
-    <a class="clase"
-       href="Clase_6_Python_Listas.html">
-        Clase 6 — Listas en Python
+    <a class="clase" href="Clase_6_Python_Listas.html">
+        📦 Clase 6 — Listas en Python
     </a>
 
 </body>
 </html>
+
