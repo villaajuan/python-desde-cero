@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<!-- saved from url=(0209)file:///C:/Users/villa/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/LocalState/sessions/2B12FD468201391C391A216901BC52CEE3E02D72/transfers/2026-39/Libro_interactivo_Python_Clase_1.html#resumen -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1020">
+<title>Python desde Cero — Libro interactivo | Clase 1</title>
+<style>
+:root{
+  --bg:#0b1020;--panel:#121a2e;--panel2:#17233b;--text:#eef4ff;--muted:#a9b7d0;
+  --line:#293754;--blue:#60a5fa;--cyan:#67e8f9;--yellow:#facc15;--green:#86efac;
+  --pink:#f9a8d4;--shadow:0 18px 50px #0005;--radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:radial-gradient(ellipse at 15% 0%,#172b50 0,transparent 40%),var(--bg);color:var(--text);font:16px/1.7 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:inherit}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.topbar{position:sticky;top:0;z-index:10;background:#0b1020eF;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1180px;margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.02em}
+.pylogo{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#3b82f6,#facc15);color:#07111f;font-size:20px;font-weight:900}
+.nav-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:9px 14px;border-radius:12px;font-weight:650;transition:.2s}
+.btn:hover{transform:translateY(-1px);border-color:var(--blue)}
+.btn.primary{background:var(--blue);color:#07111f;border-color:transparent}
+.btn.ghost{background:transparent}
+.progress-wrap{height:3px;background:#1e293b}
+.progress{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .15s}
+.layout{max-width:1180px;margin:0 auto;padding:32px 22px 80px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:28px}
+.sidebar{position:sticky;top:91px;align-self:start;max-height:calc(100vh - 115px);overflow:auto;padding:18px;background:#10182a;border:1px solid var(--line);border-radius:18px}
+.sidebar h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 12px}
+.sidebar a{display:block;text-decoration:none;padding:8px 10px;border-radius:9px;color:var(--muted);font-size:.92rem}
+.sidebar a:hover,.sidebar a.active{background:#1d2b45;color:var(--text)}
+main{min-width:0}
+.hero{position:relative;overflow:hidden;border:1px solid #345078;border-radius:30px;padding:clamp(28px,5vw,58px);background:linear-gradient(125deg,#14284a 0%,#111a30 56%,#182744 100%);box-shadow:var(--shadow)}
+.hero:after{content:"Py";position:absolute;right:3%;bottom:-.3em;font-size:clamp(150px,25vw,300px);line-height:1;font-weight:950;color:#ffffff08;pointer-events:none}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:6px 11px;border:1px solid #3b5b85;background:#172d4d;border-radius:999px;color:#bfdbfe;font-size:.82rem;font-weight:700}
+h1{font-size:clamp(2.4rem,6vw,4.8rem);line-height:1.04;letter-spacing:-.055em;margin:20px 0 16px;max-width:760px}
+.gradient-text{background:linear-gradient(90deg,#93c5fd,#67e8f9,#fde68a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:680px;color:#c7d5eb;font-size:1.1rem}
+.hero-bottom{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+.pill{border:1px solid #3a4d6e;background:#0e1a30;border-radius:999px;padding:7px 12px;color:#dbeafe;font-size:.88rem}
+section{margin-top:28px;padding:clamp(22px,4vw,36px);background:linear-gradient(180deg,#121a2e,#101728);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 12px 30px #0002}
+.section-head{display:flex;align-items:flex-start;gap:15px;margin-bottom:20px}
+.num{flex:0 0 42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#1d3557;color:#93c5fd;font-weight:850}
+h2{font-size:clamp(1.55rem,3vw,2.2rem);line-height:1.2;letter-spacing:-.03em;margin:0 0 7px}
+h3{line-height:1.3}
+.sub{color:var(--muted);margin:0}
+p{margin:.65em 0}
+strong{color:#fff}
+.callout{margin:20px 0;padding:17px 19px;border-left:4px solid var(--cyan);background:#10273a;border-radius:0 14px 14px 0}
+.callout.gold{border-color:var(--yellow);background:#2a2514}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+.flow-card{padding:19px;border:1px solid var(--line);border-radius:16px;background:#151f34}
+.flow-card .symbol{font-size:1.6rem;margin-bottom:7px}
+.flow-card h3{margin:0 0 5px}
+.flow-card p{font-size:.93rem;color:var(--muted);margin:0}
+.codebox{margin:17px 0;border:1px solid #2e476c;border-radius:16px;overflow:hidden;background:#07111f}
+.codehead{display:flex;align-items:center;justify-content:space-between;padding:10px 15px;background:#111f35;border-bottom:1px solid #263957;color:#9fb3d2;font-size:.78rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase}
+pre{margin:0;padding:20px;overflow:auto;color:#bbf7d0;font: .98rem/1.8 ui-monospace,SFMono-Regular,Consolas,monospace}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.output{padding:16px 20px;background:#050b14;border-top:1px solid #263957;color:#f8fafc;font-family:ui-monospace,monospace}
+.output-label{font-size:.72rem;color:#8ea2bf;letter-spacing:.1em;margin-bottom:5px}
+.parts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.part{border:1px solid var(--line);border-radius:14px;padding:15px;background:#151f34}
+.part code{display:inline-block;color:#93c5fd;background:#0b1425;padding:4px 7px;border-radius:7px;margin-bottom:8px}
+.part p{color:var(--muted);font-size:.92rem;margin:0}
+details{border:1px solid var(--line);border-radius:13px;margin:10px 0;background:#141e32}
+summary{cursor:pointer;padding:14px 16px;font-weight:700}
+details .detail-body{padding:0 16px 16px;color:#c2cfe3}
+.quiz-q{padding:19px 0;border-bottom:1px solid var(--line)}
+.quiz-q:last-child{border-bottom:0}
+.quiz-q h3{font-size:1.04rem;margin:0 0 12px}
+.options{display:grid;gap:8px}
+.option{display:flex;gap:10px;align-items:center;padding:11px 13px;border:1px solid #30405c;border-radius:11px;background:#111a2b;cursor:pointer}
+.option:has(input:checked){border-color:var(--blue);background:#172b47}
+.option input{accent-color:var(--blue)}
+.feedback{display:none;margin-top:12px;padding:12px 14px;border-radius:11px;background:#172b28;color:#bbf7d0}
+.feedback.show{display:block}
+.score{display:none;margin-top:18px;padding:18px;border:1px solid #3d6b59;background:#10251f;border-radius:14px}
+.score.show{display:block}
+.challenge-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+textarea{width:100%;min-height:190px;resize:vertical;background:#07111f;color:#d1fae5;border:1px solid #2e476c;border-radius:13px;padding:16px;font: .95rem/1.7 ui-monospace,monospace}
+.editor-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.preview{min-height:190px;background:#050b14;border:1px solid #263957;border-radius:13px;padding:16px;font: .95rem/1.7 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;color:#e2e8f0}
+.hint{display:none;margin-top:12px;padding:14px;border-radius:12px;background:#2a2514;color:#fde68a}
+.hint.show{display:block}
+.checklist{display:grid;gap:10px}
+.checklist label{display:flex;gap:11px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:12px;background:#141e32}
+.checklist input{margin-top:6px;accent-color:var(--green);transform:scale(1.15)}
+footer{text-align:center;color:var(--muted);padding:30px 10px 0;font-size:.9rem}
+.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#e0f2fe;color:#082f49;padding:10px 16px;border-radius:999px;font-weight:750;box-shadow:var(--shadow);transition:.25s;z-index:30}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.light{--bg:#f2f6fc;--panel:#fff;--panel2:#e8eef8;--text:#172033;--muted:#52617a;--line:#d4deec;--shadow:0 18px 50px #19365a12;background:radial-gradient(ellipse at 15% 0%,#dcecff 0,transparent 40%),var(--bg)}
+.light .topbar{background:#f2f6fceF}.light .sidebar,.light section{background:#fff}.light .hero{background:linear-gradient(125deg,#dcecff,#f7fbff,#e7f6ff);border-color:#b6cde9}.light .hero p{color:#40516c}.light .hero:after{color:#123a6b0a}.light .pill{background:#fff;color:#29405e;border-color:#c8d7ea}.light .flow-card,.light .part,.light details,.light .checklist label{background:#f7f9fd}.light .callout{background:#eaf7fb;color:#172033}.light .callout.gold{background:#fff7df}.light .option{background:#fff;color:#172033}.light .option:has(input:checked){background:#eaf3ff}.light .codehead{background:#e6edf8;color:#43536b}.light .output{background:#101827;color:#fff}.light .preview{background:#101827;color:#e2e8f0}.light .sidebar a{color:#52617a}.light .sidebar a:hover,.light .sidebar a.active{background:#e8f0fc;color:#172033}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:relative;top:auto;max-height:none}.sidebar nav{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}.flow,.parts{grid-template-columns:1fr}.challenge-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.topbar-inner{padding:10px 14px}.brand span:last-child{display:none}.layout{padding:18px 13px 55px}.hero{padding:26px 22px}.nav-actions .btn{padding:8px 10px;font-size:.85rem}.sidebar nav{grid-template-columns:1fr 1fr}section{padding:22px 18px}.hero p{font-size:1rem}}
+@media print{body{background:white;color:#111}.topbar,.sidebar,.nav-actions,.editor-actions,.toast{display:none!important}.layout{display:block;padding:0;max-width:none}.hero,section{box-shadow:none;background:white!important;color:#111;border:1px solid #bbb;break-inside:avoid}.hero p,.sub,.flow-card p,.part p{color:#333}.hero:after{display:none}.gradient-text{color:#174a82;-webkit-text-fill-color:#174a82}pre,.output,.preview{print-color-adjust:exact;-webkit-print-color-adjust:exact}section{margin-top:14px}.quiz-q{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><div class="pylogo">Py</div><span>PYTHON · CUADERNO INTERACTIVO</span></div>
+    <div class="nav-actions">
+      <button class="btn ghost" id="themeBtn" type="button" aria-label="Cambiar tema">☼ Tema</button>
+      <button class="btn" id="printBtn" type="button">⇩ Imprimir / PDF</button>
+      <button class="btn primary" id="startBtn" type="button">Empezar ↓</button>
+    </div>
+  </div>
+  <div class="progress-wrap"><div class="progress" id="progress" style="width: 18.1314%;"></div></div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h3>Contenido de la clase</h3>
+    <nav id="toc">
+      <a href="file:///C:/Users/villa/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/LocalState/sessions/2B12FD468201391C391A216901BC52CEE3E02D72/transfers/2026-39/Libro_interactivo_Python_Clase_1.html#inicio" class="">Portada</a>
+      <a href="file:///C:/Users/villa/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/LocalState/sessions/2B12FD468201391C391A216901BC52CEE3E02D72/transfers/2026-39/Libro_interactivo_Python_Clase_1.html#programar" class="active">1. ¿Qué es programar?</a>
+      <a href="file:///C:/Users/villa/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/LocalState/sessions/2B12FD468201391C391A216901BC52CEE3E02D72/transfers/2026-39/Libro_interactivo_Python_Clase_1.html#python" class="">2. ¿Qué es Python?</a>
+      <a href="file:///C:/Users/villa/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/LocalState/sessions/2B12FD468201391C391A216901BC52CEE3E02D72/transfers/2026-39/Libro_interactivo_Python_Clase_1.html#print" class="">3. Tu primera instrucción</a>
+      <a href="file:///C:/Users/villa/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/LocalState/sessions/2B12FD468201391C391A216901BC52CEE3E02D72/transfers/2026-39/Libro_interactivo_Python_Clase_1.html#experimenta" class="">4. Experimenta</a>
+      <a href="file:///C:/Users/villa/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/LocalState/sessions/2B12FD468201391C391A216901BC52CEE3E02D72/transfers/2026-39/Libro_interactivo_Python_Clase_1.html#quiz" class="">5. Laboratorio</a>
+      <a href="file:///C:/Users/villa/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/LocalState/sessions/2B12FD468201391C391A216901BC52CEE3E02D72/transfers/2026-39/Libro_interactivo_Python_Clase_1.html#reto" class="">6. Tu primer reto</a>
+      <a href="file:///C:/Users/villa/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/LocalState/sessions/2B12FD468201391C391A216901BC52CEE3E02D72/transfers/2026-39/Libro_interactivo_Python_Clase_1.html#profesor" class="">7. Para enseñar</a>
+      <a href="file:///C:/Users/villa/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/LocalState/sessions/2B12FD468201391C391A216901BC52CEE3E02D72/transfers/2026-39/Libro_interactivo_Python_Clase_1.html#resumen" class="">Resumen y progreso</a>
+    </nav>
+  </aside>
+
+  <main>
+    <header class="hero" id="inicio">
+      <div class="eyebrow">🐍 RUTA PYTHON · NIVEL 0 → 1</div>
+      <h1>Tu primer paso en <span class="gradient-text">Python</span></h1>
+      <p>Una clase interactiva para comprender qué es programar, escribir tu primer código y empezar a pensar como desarrollador.</p>
+      <div class="hero-bottom">
+        <span class="pill">⏱ 30–45 minutos</span><span class="pill">📘 Clase 1 de 16</span><span class="pill">🎯 Principiante absoluto</span>
+      </div>
+    </header>
+
+    <section id="programar">
+      <div class="section-head"><div class="num">01</div><div><h2>¿Qué es programar?</h2><p class="sub">Dar instrucciones claras y ordenadas a una computadora.</p></div></div>
+      <p>Imagina que tienes un robot. Puede hacer muchas cosas, pero necesita que le digas <strong>qué hacer y en qué orden</strong>. Programar consiste en escribir instrucciones para que una computadora realice una tarea.</p>
+      <div class="callout"><strong>Algoritmo:</strong> una serie de pasos ordenados para resolver un problema.</div>
+      <h3>Ejemplo: preparar una taza de café</h3>
+      <div class="flow">
+        <div class="flow-card"><div class="symbol">①</div><h3>Entrada</h3><p>Conseguir los ingredientes y una taza.</p></div>
+        <div class="flow-card"><div class="symbol">⚙️</div><h3>Proceso</h3><p>Calentar agua y preparar el café.</p></div>
+        <div class="flow-card"><div class="symbol">☕</div><h3>Salida</h3><p>Una taza de café lista.</p></div>
+      </div>
+      <p>Muchos programas se pueden analizar con este modelo:</p>
+      <div class="callout gold"><strong>Entrada → Proceso → Salida</strong><br>Recibimos datos, hacemos algo con ellos y producimos un resultado.</div>
+    </section>
+
+    <section id="python">
+      <div class="section-head"><div class="num">02</div><div><h2>¿Qué es Python?</h2><p class="sub">Un lenguaje para expresar instrucciones que la computadora puede ejecutar.</p></div></div>
+      <p>Python es un lenguaje de programación conocido por una sintaxis legible. Se usa para automatización, análisis de datos, inteligencia artificial, desarrollo web y muchas otras tareas.</p>
+      <div class="flow">
+        <div class="flow-card"><div class="symbol">📖</div><h3>Legible</h3><p>Su código suele parecerse a instrucciones sencillas.</p></div>
+        <div class="flow-card"><div class="symbol">🧰</div><h3>Versátil</h3><p>Sirve para proyectos pequeños y grandes.</p></div>
+        <div class="flow-card"><div class="symbol">🌱</div><h3>Ideal para empezar</h3><p>Permite aprender conceptos fundamentales sin demasiada sintaxis inicial.</p></div>
+      </div>
+      <p>En esta primera clase usaremos una instrucción muy común: <code>print()</code>.</p>
+    </section>
+
+    <section id="print">
+      <div class="section-head"><div class="num">03</div><div><h2>Tu primera instrucción: <code>print()</code></h2><p class="sub">Mostrar información en la pantalla.</p></div></div>
+      <p>Observa el código. La función <code>print()</code> muestra el contenido que colocamos dentro de sus paréntesis.</p>
+      <div class="codebox">
+        <div class="codehead"><span>Tu primer programa</span><button class="btn" data-copy="print(&quot;Hola, mundo&quot;)">Copiar código</button></div>
+        <pre><code>print("Hola, mundo")</code></pre>
+        <div class="output"><div class="output-label">SALIDA</div>Hola, mundo</div>
+      </div>
+      <h3>Desarmemos la instrucción</h3>
+      <div class="parts">
+        <div class="part"><code>print</code><p>Nombre de una función incorporada que muestra información.</p></div>
+        <div class="part"><code>( )</code><p>Los paréntesis contienen el dato que le pasamos a la función.</p></div>
+        <div class="part"><code>"Hola, mundo"</code><p>Un texto, también llamado cadena o <em>string</em>. Las comillas lo delimitan.</p></div>
+      </div>
+      <details><summary>¿Por qué usamos comillas?</summary><div class="detail-body">Las comillas le indican a Python que queremos representar texto literal. Por ejemplo, <code>"2 + 3"</code> es texto. En cambio, <code>2 + 3</code> es una expresión matemática que Python puede calcular.</div></details>
+      <details><summary>¿Qué pasa si olvido cerrar las comillas?</summary><div class="detail-body">Python mostrará un error de sintaxis porque no puede identificar dónde termina el texto. Los errores son parte normal del aprendizaje: léelos, busca la línea indicada y corrige el problema.</div></details>
+    </section>
+
+    <section id="experimenta">
+      <div class="section-head"><div class="num">04</div><div><h2>Experimenta: cambia el mensaje</h2><p class="sub">Predice el resultado y luego compáralo.</p></div></div>
+      <div class="codebox">
+        <div class="codehead"><span>Ejemplo con tres instrucciones</span><button class="btn" data-copy="print(&quot;Estoy aprendiendo Python&quot;)\nprint(&quot;Mi primera clase&quot;)\nprint(&quot;¡Puedo programar!&quot;)">Copiar código</button></div>
+        <pre><code>print("Estoy aprendiendo Python")
+print("Mi primera clase")
+print("¡Puedo programar!")</code></pre>
+        <div class="output"><div class="output-label">SALIDA</div>Estoy aprendiendo Python<br>Mi primera clase<br>¡Puedo programar!</div>
+      </div>
+      <p>Python ejecuta estas instrucciones de arriba hacia abajo. Cada llamada a <code>print()</code> crea una nueva línea de salida.</p>
+      <div class="callout"><strong>Prueba tú:</strong> cambia los mensajes por algo que te represente. Mantén las comillas y los paréntesis.</div>
+    </section>
+
+    <section id="quiz">
+      <div class="section-head"><div class="num">05</div><div><h2>Laboratorio interactivo</h2><p class="sub">Responde las tres preguntas y comprueba tu comprensión.</p></div></div>
+      <form id="quizForm">
+        <div class="quiz-q" data-answer="0">
+          <h3>1. ¿Qué muestra este programa?</h3>
+          <div class="codebox"><pre><code>print("Hola")</code></pre></div>
+          <div class="options">
+            <label class="option"><input type="radio" name="q1" value="0"> Hola</label>
+            <label class="option"><input type="radio" name="q1" value="1"> print</label>
+            <label class="option"><input type="radio" name="q1" value="2"> No muestra nada</label>
+          </div><div class="feedback">La función muestra el contenido que está entre los paréntesis: <code>Hola</code>.</div>
+        </div>
+        <div class="quiz-q" data-answer="1">
+          <h3>2. ¿Qué muestra este programa?</h3>
+          <div class="codebox"><pre><code>print("2 + 3")</code></pre></div>
+          <div class="options">
+            <label class="option"><input type="radio" name="q2" value="0"> 5</label>
+            <label class="option"><input type="radio" name="q2" value="1"> 2 + 3</label>
+            <label class="option"><input type="radio" name="q2" value="2"> Siempre da error</label>
+          </div><div class="feedback">Las comillas hacen que <code>2 + 3</code> sea texto literal, no una operación.</div>
+        </div>
+        <div class="quiz-q" data-answer="1">
+          <h3>3. ¿Cuántas líneas imprime?</h3>
+          <div class="codebox"><pre><code>print("A")
+print("B")</code></pre></div>
+          <div class="options">
+            <label class="option"><input type="radio" name="q3" value="0"> Una</label>
+            <label class="option"><input type="radio" name="q3" value="1"> Dos</label>
+            <label class="option"><input type="radio" name="q3" value="2"> Tres</label>
+          </div><div class="feedback">Hay dos llamadas a <code>print()</code>, por lo tanto se muestran dos líneas.</div>
+        </div>
+        <button class="btn primary" type="submit">Comprobar respuestas</button>
+        <button class="btn" type="button" id="resetQuiz">Reiniciar</button>
+      </form>
+      <div class="score" id="score" aria-live="polite"></div>
+    </section>
+
+    <section id="reto">
+      <div class="section-head"><div class="num">06</div><div><h2>Tu primer reto de programación</h2><p class="sub">Crea un programa que presente información sobre ti.</p></div></div>
+      <p><strong>Misión:</strong> escribe tres instrucciones para mostrar tu nombre, tu edad y la frase “Estoy aprendiendo Python”.</p>
+      <div class="challenge-grid">
+        <div>
+          <label for="editor"><strong>Editor de práctica</strong></label>
+          <textarea id="editor" spellcheck="false" aria-label="Editor de código Python" placeholder="print(&quot;Tu nombre&quot;)
+print(&quot;Tu edad&quot;)
+print(&quot;Estoy aprendiendo Python&quot;)">print("Jonathan")
+print("21")
+print("Estoy aprendiendo Python")</textarea>
+          <div class="editor-actions">
+            <button class="btn primary" type="button" id="runBtn">▶ Simular salida</button>
+            <button class="btn" type="button" id="hintBtn">Mostrar pista</button>
+            <button class="btn" type="button" id="copyEditor">Copiar código</button>
+          </div>
+          <div class="hint" id="hint">Pista: necesitas tres llamadas a <code>print()</code>. Cada texto debe estar entre comillas. Cambia el nombre y la edad por los tuyos.</div>
+        </div>
+        <div>
+          <strong>Vista de salida (simulada)</strong>
+          <div class="preview" id="preview" aria-live="polite">Jonathan<br>21<br>Estoy aprendiendo Python</div>
+          <p class="sub" style="font-size:.85rem">Esta vista simula únicamente ejemplos sencillos de <code>print("texto")</code>. No ejecuta Python real.</p>
+        </div>
+      </div>
+      <div class="callout gold"><strong>Reto extra:</strong> modifica el programa para que muestre cuatro líneas, incluida tu ciudad.</div>
+    </section>
+
+    <section id="profesor">
+      <div class="section-head"><div class="num">07</div><div><h2>Guía rápida para el profesor</h2><p class="sub">Cómo convertir esta lección en una clase participativa.</p></div></div>
+      <div class="flow">
+        <div class="flow-card"><div class="symbol">💬</div><h3>1. Pregunta</h3><p>¿Cómo le explicarías a un robot que prepare café?</p></div>
+        <div class="flow-card"><div class="symbol">🧠</div><h3>2. Conecta</h3><p>Relaciona los pasos con el concepto de algoritmo.</p></div>
+        <div class="flow-card"><div class="symbol">⌨️</div><h3>3. Practica</h3><p>Escribe, predice, ejecuta y modifica el código.</p></div>
+      </div>
+      <h3>Objetivos de aprendizaje</h3>
+      <div class="checklist" id="objectives">
+        <label><input type="checkbox"> Puedo explicar qué significa programar.</label>
+        <label><input type="checkbox"> Puedo describir entrada, proceso y salida.</label>
+        <label><input type="checkbox"> Puedo explicar qué hace <code>print()</code>.</label>
+        <label><input type="checkbox"> Puedo distinguir texto entre comillas de una operación.</label>
+        <label><input type="checkbox"> Puedo escribir un programa con varias instrucciones.</label>
+      </div>
+    </section>
+
+    <section id="resumen">
+      <div class="section-head"><div class="num">✓</div><div><h2>Resumen de la clase</h2><p class="sub">Las ideas que debes recordar antes de avanzar.</p></div></div>
+      <ul>
+        <li><strong>Programar</strong> es escribir instrucciones para resolver una tarea.</li>
+        <li>Un <strong>algoritmo</strong> es una secuencia ordenada de pasos.</li>
+        <li><strong>Python</strong> es un lenguaje de programación.</li>
+        <li><code>print()</code> muestra información en la pantalla.</li>
+        <li>El texto se delimita con comillas, por ejemplo: <code>"Hola"</code>.</li>
+        <li>Python ejecuta las instrucciones, normalmente, de arriba hacia abajo.</li>
+      </ul>
+      <div class="callout"><strong>Próxima clase:</strong> variables y tipos de datos. Aprenderás a guardar nombres, edades, números decimales y valores booleanos.</div>
+      <button class="btn primary" type="button" id="finishBtn">Marcar clase como completada ✓</button>
+      <p id="finishMsg" class="sub" aria-live="polite"></p>
+    </section>
+    <footer>Python desde Cero · Material didáctico interactivo · Clase 1<br>Aprende haciendo: cada error es una pista para mejorar.</footer>
+  </main>
+</div>
+<div class="toast" id="toast" role="status">Copiado al portapapeles</div>
+<script>
+const $ = (s, root=document) => root.querySelector(s);
+const $$ = (s, root=document) => [...root.querySelectorAll(s)];
+const toast = (msg) => {
+  const el = $('#toast'); el.textContent = msg; el.classList.add('show');
+  clearTimeout(window.__toastTimer); window.__toastTimer = setTimeout(()=>el.classList.remove('show'),1900);
+};
+
+// Navegación y progreso de lectura
+$('#startBtn').addEventListener('click',()=>$('#programar').scrollIntoView({behavior:'smooth'}));
+$('#printBtn').addEventListener('click',()=>window.print());
+$('#themeBtn').addEventListener('click',()=>{
+  document.body.classList.toggle('light');
+  $('#themeBtn').textContent = document.body.classList.contains('light') ? '☾ Tema' : '☼ Tema';
+});
+window.addEventListener('scroll',()=>{
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  $('#progress').style.width = (max > 0 ? window.scrollY/max*100 : 0) + '%';
+});
+const sections = $$('main section, #inicio');
+const links = $$('#toc a');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id));
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>observer.observe(s));
+
+// Copiar fragmentos de código
+async function copyText(text){
+  try{await navigator.clipboard.writeText(text);toast('Código copiado');}
+  catch(e){
+    const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');toast('Código copiado');}catch(_){toast('No se pudo copiar automáticamente');}
+    ta.remove();
+  }
+}
+$$('[data-copy]').forEach(btn=>btn.addEventListener('click',()=>copyText(btn.dataset.copy.replace(/\\n/g,'\n'))));
+$('#copyEditor').addEventListener('click',()=>copyText($('#editor').value));
+
+// Cuestionario
+$('#quizForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const questions=$$('.quiz-q'); let score=0,answered=0;
+  questions.forEach(q=>{
+    const selected=$('input:checked',q), correct=Number(q.dataset.answer);
+    const feedback=$('.feedback',q);
+    feedback.classList.add('show');
+    if(selected){answered++;if(Number(selected.value)===correct){score++;feedback.style.background='#172b28';feedback.style.color='#bbf7d0';}
+      else{feedback.style.background='#332319';feedback.style.color='#fed7aa';feedback.textContent='Casi. Revisa la explicación: '+feedback.textContent;}}
+    else{feedback.style.background='#332319';feedback.style.color='#fed7aa';feedback.textContent='Elige una respuesta. '+feedback.textContent;}
+  });
+  const box=$('#score');box.classList.add('show');
+  box.innerHTML=`<strong>Resultado: ${score} de ${questions.length}</strong><br>${answered<questions.length?'Respondiste '+answered+' de '+questions.length+'. Completa las preguntas pendientes.':score===questions.length?'¡Excelente! Comprendiste los conceptos esenciales.':'Buen intento. Lee las explicaciones y vuelve a probar.'}`;
+  box.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+$('#resetQuiz').addEventListener('click',()=>{
+  $('#quizForm').reset();$$('.feedback').forEach(f=>{f.classList.remove('show');f.style='';});
+  $('#score').classList.remove('show');$('#score').textContent='';
+});
+
+// Simulador educativo limitado: NO evalúa código arbitrario.
+function simulatePrint(src){
+  const lines=src.split(/\r?\n/);const out=[];
+  for(let i=0;i<lines.length;i++){
+    const line=lines[i].trim();
+    if(!line || line.startsWith('#')) continue;
+    const m=line.match(/^print\(\s*(["'])(.*?)\1\s*\)\s*$/);
+    if(!m) return {error:`Línea ${i+1}: por ahora el simulador acepta instrucciones como print("Hola"). Revisa comillas y paréntesis.`};
+    out.push(m[2].replace(/\\n/g,'\n').replace(/\\"/g,'"').replace(/\\'/g,"'"));
+  }
+  return {out:out.join('\n')};
+}
+$('#runBtn').addEventListener('click',()=>{
+  const result=simulatePrint($('#editor').value);
+  $('#preview').textContent=result.error||result.out||'(El programa no muestra texto)';
+  if(result.error)toast('Revisa el formato del código');else toast('Simulación terminada');
+});
+$('#hintBtn').addEventListener('click',()=>$('#hint').classList.toggle('show'));
+$('#finishBtn').addEventListener('click',()=>{
+  $('#finishMsg').textContent='¡Clase completada! Revisa los objetivos y practica una vez más antes de pasar a variables.';
+  $('#finishBtn').textContent='Clase completada ✓';$('#finishBtn').disabled=true;
+});
+</script>
+
+</body></html>
