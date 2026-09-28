@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1020">
+<title>Python desde Cero — Clase 2: Variables y tipos de datos</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2e;--panel2:#17233b;--text:#eef4ff;--muted:#a9b7d0;--line:#293754;--blue:#60a5fa;--cyan:#67e8f9;--yellow:#facc15;--green:#86efac;--shadow:0 18px 50px #0005;--radius:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{margin:0;background:radial-gradient(ellipse at 15% 0%,#172b50 0,transparent 40%),var(--bg);color:var(--text);font:16px/1.7 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+button,input,textarea{font:inherit}button{cursor:pointer}code,pre,textarea,.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.topbar{position:sticky;top:0;z-index:10;background:#0b1020ef;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1180px;margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.02em}.pylogo{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#3b82f6,#facc15);color:#07111f;font-size:20px;font-weight:900}
+.nav-actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:9px 14px;border-radius:12px;font-weight:650;transition:.2s}.btn:hover{transform:translateY(-1px);border-color:var(--blue)}.btn.primary{background:var(--blue);color:#07111f;border-color:transparent}.btn.ghost{background:transparent}
+.progress-wrap{height:3px;background:#1e293b}.progress{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .15s}
+.layout{max-width:1180px;margin:0 auto;padding:32px 22px 80px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:28px}
+.sidebar{position:sticky;top:91px;align-self:start;max-height:calc(100vh - 115px);overflow:auto;padding:18px;background:#10182a;border:1px solid var(--line);border-radius:18px}.sidebar h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 12px}.sidebar a{display:block;text-decoration:none;padding:8px 10px;border-radius:9px;color:var(--muted);font-size:.92rem}.sidebar a:hover,.sidebar a.active{background:#1d2b45;color:var(--text)}
+main{min-width:0}.hero{position:relative;overflow:hidden;border:1px solid #345078;border-radius:30px;padding:clamp(28px,5vw,58px);background:linear-gradient(125deg,#14284a,#111a30 56%,#182744);box-shadow:var(--shadow)}.hero:after{content:"x =";position:absolute;right:3%;bottom:-.15em;font-size:clamp(100px,19vw,240px);line-height:1;font-weight:950;color:#ffffff08;pointer-events:none}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:6px 11px;border:1px solid #3b5b85;background:#172d4d;border-radius:999px;color:#bfdbfe;font-size:.82rem;font-weight:700}
+h1{font-size:clamp(2.3rem,6vw,4.5rem);line-height:1.04;letter-spacing:-.055em;margin:20px 0 16px;max-width:800px}.gradient-text{background:linear-gradient(90deg,#93c5fd,#67e8f9,#fde68a);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:700px;color:#c7d5eb;font-size:1.1rem}.hero-bottom{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.pill{border:1px solid #3a4d6e;background:#0e1a30;border-radius:999px;padding:7px 12px;color:#dbeafe;font-size:.88rem}
+section{margin-top:28px;padding:clamp(22px,4vw,36px);background:linear-gradient(180deg,#121a2e,#101728);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 12px 30px #0002}.section-head{display:flex;align-items:flex-start;gap:15px;margin-bottom:20px}.num{flex:0 0 42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#1d3557;color:#93c5fd;font-weight:850}h2{font-size:clamp(1.5rem,3vw,2.15rem);line-height:1.2;letter-spacing:-.03em;margin:0 0 7px}h3{line-height:1.3}p{margin:.65em 0}.sub{color:var(--muted);margin:0}strong{color:#fff}
+.callout{margin:20px 0;padding:17px 19px;border-left:4px solid var(--cyan);background:#10273a;border-radius:0 14px 14px 0}.callout.gold{border-color:var(--yellow);background:#2a2514}
+.map{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}.map-card{padding:17px;border:1px solid var(--line);border-radius:15px;background:#151f34}.map-card h3{margin:0 0 5px}.map-card p{color:var(--muted);margin:0;font-size:.93rem}.type{display:inline-block;padding:4px 9px;border-radius:8px;font-weight:800;font-size:.86rem;margin-bottom:8px}.t-int{background:#173b65;color:#93c5fd}.t-float{background:#3b2d14;color:#fde68a}.t-str{background:#3b2040;color:#f0abfc}.t-bool{background:#123b32;color:#86efac}
+.codebox{margin:17px 0;border:1px solid #2e476c;border-radius:16px;overflow:hidden;background:#07111f}.codehead{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 15px;background:#111f35;border-bottom:1px solid #263957;color:#9fb3d2;font-size:.78rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase}pre{margin:0;padding:20px;overflow:auto;color:#bbf7d0;font-size:.97rem;line-height:1.8}.output{padding:16px 20px;background:#050b14;border-top:1px solid #263957;color:#f8fafc;font-family:ui-monospace,monospace}.output-label{font-size:.72rem;color:#8ea2bf;letter-spacing:.1em;margin-bottom:5px}
+.parts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.part{border:1px solid var(--line);border-radius:14px;padding:15px;background:#151f34}.part code{display:inline-block;color:#93c5fd;background:#0b1425;padding:4px 7px;border-radius:7px;margin-bottom:8px}.part p{color:var(--muted);font-size:.92rem;margin:0}
+details{border:1px solid var(--line);border-radius:13px;margin:10px 0;background:#141e32}summary{cursor:pointer;padding:14px 16px;font-weight:700}details .detail-body{padding:0 16px 16px;color:#c2cfe3}
+.quiz-q{padding:19px 0;border-bottom:1px solid var(--line)}.quiz-q:last-child{border-bottom:0}.quiz-q h3{font-size:1.04rem;margin:0 0 12px}.options{display:grid;gap:8px}.option{display:flex;gap:10px;align-items:center;padding:11px 13px;border:1px solid #30405c;border-radius:11px;background:#111a2b;cursor:pointer}.option:has(input:checked){border-color:var(--blue);background:#172b47}.option input{accent-color:var(--blue)}.feedback{display:none;margin-top:12px;padding:12px 14px;border-radius:11px}.feedback.show{display:block}.score{display:none;margin-top:18px;padding:18px;border:1px solid #3d6b59;background:#10251f;border-radius:14px}.score.show{display:block}
+.challenge-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}textarea{width:100%;min-height:220px;resize:vertical;background:#07111f;color:#d1fae5;border:1px solid #2e476c;border-radius:13px;padding:16px;font-size:.95rem;line-height:1.7}.editor-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.preview{min-height:220px;background:#050b14;border:1px solid #263957;border-radius:13px;padding:16px;font: .95rem/1.7 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;color:#e2e8f0}.hint{display:none;margin-top:12px;padding:14px;border-radius:12px;background:#2a2514;color:#fde68a}.hint.show{display:block}
+.checklist{display:grid;gap:10px}.checklist label{display:flex;gap:11px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:12px;background:#141e32}.checklist input{margin-top:6px;accent-color:var(--green);transform:scale(1.15)}
+footer{text-align:center;color:var(--muted);padding:30px 10px 0;font-size:.9rem}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#e0f2fe;color:#082f49;padding:10px 16px;border-radius:999px;font-weight:750;box-shadow:var(--shadow);transition:.25s;z-index:30}.toast.show{opacity:1;transform:translate(-50%,0)}
+.light{--bg:#f2f6fc;--panel:#fff;--panel2:#e8eef8;--text:#172033;--muted:#52617a;--line:#d4deec;--shadow:0 18px 50px #19365a12;background:radial-gradient(ellipse at 15% 0%,#dcecff 0,transparent 40%),var(--bg)}.light .topbar{background:#f2f6fcef}.light .sidebar,.light section{background:#fff}.light .hero{background:linear-gradient(125deg,#dcecff,#f7fbff,#e7f6ff);border-color:#b6cde9}.light .hero p{color:#40516c}.light .hero:after{color:#123a6b0a}.light .pill{background:#fff;color:#29405e;border-color:#c8d7ea}.light .map-card,.light .part,.light details,.light .checklist label{background:#f7f9fd}.light .callout{background:#eaf7fb;color:#172033}.light .callout.gold{background:#fff7df}.light .option{background:#fff;color:#172033}.light .option:has(input:checked){background:#eaf3ff}.light .codehead{background:#e6edf8;color:#43536b}.light .output{background:#101827;color:#fff}.light .preview{background:#101827;color:#e2e8f0}.light .sidebar a{color:#52617a}.light .sidebar a:hover,.light .sidebar a.active{background:#e8f0fc;color:#172033}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:relative;top:auto;max-height:none}.sidebar nav{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}.parts{grid-template-columns:1fr}.challenge-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.topbar-inner{padding:10px 14px}.brand span:last-child{display:none}.layout{padding:18px 13px 55px}.hero{padding:26px 22px}.nav-actions .btn{padding:8px 10px;font-size:.85rem}.sidebar nav{grid-template-columns:1fr 1fr}section{padding:22px 18px}.hero p{font-size:1rem}.map{grid-template-columns:1fr}}
+@media print{body{background:white;color:#111}.topbar,.sidebar,.nav-actions,.editor-actions,.toast{display:none!important}.layout{display:block;padding:0;max-width:none}.hero,section{box-shadow:none;background:white!important;color:#111;border:1px solid #bbb;break-inside:avoid}.hero p,.sub,.map-card p,.part p{color:#333}.hero:after{display:none}.gradient-text{color:#174a82;-webkit-text-fill-color:#174a82}pre,.output,.preview{print-color-adjust:exact;-webkit-print-color-adjust:exact}section{margin-top:14px}.quiz-q{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner">
+  <div class="brand"><div class="pylogo">Py</div><span>PYTHON · CUADERNO INTERACTIVO</span></div>
+  <div class="nav-actions"><button class="btn ghost" id="themeBtn">☼ Tema</button><button class="btn" id="printBtn">⇩ Imprimir / PDF</button><button class="btn primary" id="startBtn">Empezar ↓</button></div>
+</div><div class="progress-wrap"><div class="progress" id="progress"></div></div></header>
+<div class="layout">
+<aside class="sidebar"><h3>Contenido de la clase</h3><nav id="toc">
+<a href="#inicio">Portada</a><a href="#concepto">1. ¿Qué es una variable?</a><a href="#asignacion">2. Asignación</a><a href="#tipos">3. Tipos de datos</a><a href="#type">4. type() y conversiones</a><a href="#input">5. Entrada de datos</a><a href="#quiz">6. Laboratorio</a><a href="#reto">7. Reto práctico</a><a href="#profesor">8. Guía docente</a><a href="#resumen">Resumen</a>
+</nav></aside>
+<main>
+<header class="hero" id="inicio">
+<div class="eyebrow">🐍 RUTA PYTHON · CLASE 2</div>
+<h1>Variables y <span class="gradient-text">tipos de datos</span></h1>
+<p>Aprende a guardar información, reconocer qué tipo de dato estás usando y recibir datos de una persona. Incluye ejemplos, cuestionario y un laboratorio interactivo.</p>
+<div class="hero-bottom"><span class="pill">⏱ 45–60 minutos</span><span class="pill">📘 Clase 2 de 16</span><span class="pill">🎯 Fundamentos</span></div>
+</header>
+
+<section id="concepto">
+<div class="section-head"><div class="num">01</div><div><h2>¿Qué es una variable?</h2><p class="sub">Un nombre que usamos para referirnos a un valor.</p></div></div>
+<p>Imagina una etiqueta pegada a una caja. La etiqueta dice <code>nombre</code> y dentro guardamos el texto <code>"Sofía"</code>. En Python, una variable permite asociar un nombre con un valor para poder utilizarlo después.</p>
+<div class="map">
+<div class="map-card"><span class="type t-str">nombre</span><h3>Nombre de la variable</h3><p>La etiqueta que escribimos en el código.</p></div>
+<div class="map-card"><span class="type t-float">"Sofía"</span><h3>Valor almacenado</h3><p>El dato al que se refiere la variable.</p></div>
+</div>
+<div class="codebox"><div class="codehead"><span>Ejemplo</span><button class="btn" data-copy='nombre = "Sofía"\nprint(nombre)'>Copiar código</button></div><pre><code>nombre = "Sofía"
+print(nombre)</code></pre><div class="output"><div class="output-label">SALIDA</div>Sofía</div></div>
+<div class="callout"><strong>Idea clave:</strong> cuando escribes <code>print(nombre)</code>, no necesitas comillas alrededor de <code>nombre</code>. Python busca el valor asociado a esa variable.</div>
+</section>
+
+<section id="asignacion">
+<div class="section-head"><div class="num">02</div><div><h2>Asignar y cambiar valores</h2><p class="sub">El signo <code>=</code> asigna un valor a un nombre.</p></div></div>
+<p>En Python, <code>=</code> no significa exactamente “es igual a” como en una ecuación matemática. En una asignación, indica que el nombre de la izquierda recibe el valor de la derecha.</p>
+<div class="codebox"><div class="codehead"><span>Asignación paso a paso</span><button class="btn" data-copy='edad = 20\nedad = 21\nprint(edad)'>Copiar código</button></div><pre><code>edad = 20
+edad = 21
+print(edad)</code></pre><div class="output"><div class="output-label">SALIDA</div>21</div></div>
+<p>La segunda asignación reemplaza el valor anterior asociado a <code>edad</code>. Por eso se imprime <code>21</code>.</p>
+<h3>Reglas para nombrar variables</h3>
+<div class="parts">
+<div class="part"><code>nombre</code><p>Válido: empieza con una letra.</p></div>
+<div class="part"><code>edad_2</code><p>Válido: puede incluir números después del primer carácter y guion bajo.</p></div>
+<div class="part"><code>2edad</code><p>No válido: un nombre no puede comenzar con un número.</p></div>
+</div>
+<div class="callout gold"><strong>Convención recomendada:</strong> usa nombres descriptivos y <code>snake_case</code>, como <code>nombre_completo</code> o <code>precio_total</code>. Python distingue mayúsculas de minúsculas: <code>edad</code> y <code>Edad</code> son nombres diferentes.</div>
+</section>
+
+<section id="tipos">
+<div class="section-head"><div class="num">03</div><div><h2>Los tipos de datos principales</h2><p class="sub">El tipo indica qué clase de valor estamos manejando.</p></div></div>
+<div class="map">
+<div class="map-card"><span class="type t-int">int</span><h3>Números enteros</h3><p>Sin parte decimal: <code>7</code>, <code>-3</code>, <code>0</code>.</p></div>
+<div class="map-card"><span class="type t-float">float</span><h3>Números decimales</h3><p>Con punto decimal: <code>3.14</code>, <code>-0.5</code>.</p></div>
+<div class="map-card"><span class="type t-str">str</span><h3>Cadenas de texto</h3><p>Texto entre comillas: <code>"Hola"</code>, <code>'Python'</code>.</p></div>
+<div class="map-card"><span class="type t-bool">bool</span><h3>Booleanos</h3><p>Solo dos valores: <code>True</code> o <code>False</code>.</p></div>
+</div>
+<div class="codebox"><div class="codehead"><span>Un ejemplo de cada tipo</span><button class="btn" data-copy='edad = 21\naltura = 1.72\nnombre = "Sofía"\nes_estudiante = True\n\nprint(edad)\nprint(altura)\nprint(nombre)\nprint(es_estudiante)'>Copiar código</button></div><pre><code>edad = 21                 # int
+altura = 1.72             # float
+nombre = "Sofía"          # str
+es_estudiante = True      # bool
+
+print(edad)
+print(altura)
+print(nombre)
+print(es_estudiante)</code></pre><div class="output"><div class="output-label">SALIDA</div>21<br>1.72<br>Sofía<br>True</div></div>
+<details><summary>¿Por qué "21" no es lo mismo que 21?</summary><div class="detail-body"><code>21</code> sin comillas es un número entero. <code>"21"</code> entre comillas es texto. Aunque se vean parecidos, Python los trata de manera distinta: el número se puede usar directamente en operaciones matemáticas; el texto representa caracteres.</div></details>
+</section>
+
+<section id="type">
+<div class="section-head"><div class="num">04</div><div><h2>Descubrir tipos con <code>type()</code></h2><p class="sub">Pregúntale a Python qué tipo de dato está usando.</p></div></div>
+<div class="codebox"><div class="codehead"><span>Inspeccionar datos</span><button class="btn" data-copy='print(type(21))\nprint(type(3.14))\nprint(type("Hola"))\nprint(type(False))'>Copiar código</button></div><pre><code>print(type(21))
+print(type(3.14))
+print(type("Hola"))
+print(type(False))</code></pre><div class="output"><div class="output-label">SALIDA</div>&lt;class 'int'&gt;<br>&lt;class 'float'&gt;<br>&lt;class 'str'&gt;<br>&lt;class 'bool'&gt;</div></div>
+<h3>Convertir un tipo de dato</h3>
+<p>A veces recibimos un dato como texto y necesitamos convertirlo a número. Para ello existen funciones como <code>int()</code>, <code>float()</code> y <code>str()</code>.</p>
+<div class="codebox"><div class="codehead"><span>Conversión</span><button class="btn" data-copy='edad_texto = "21"\nedad_numero = int(edad_texto)\nprint(edad_numero + 1)'>Copiar código</button></div><pre><code>edad_texto = "21"
+edad_numero = int(edad_texto)
+print(edad_numero + 1)</code></pre><div class="output"><div class="output-label">SALIDA</div>22</div></div>
+<div class="callout gold"><strong>Atención:</strong> <code>int("hola")</code> produce un error, porque el texto no representa un número entero válido. Más adelante aprenderemos a manejar estos errores.</div>
+</section>
+
+<section id="input">
+<div class="section-head"><div class="num">05</div><div><h2>Recibir información con <code>input()</code></h2><p class="sub">Permite que el usuario escriba un dato.</p></div></div>
+<p>La función <code>input()</code> muestra una pregunta y espera a que la persona escriba algo. Lo importante: <strong>el resultado de <code>input()</code> es texto (<code>str</code>)</strong>, incluso si la persona escribe números.</p>
+<div class="codebox"><div class="codehead"><span>Preguntar el nombre</span><button class="btn" data-copy='nombre = input("¿Cómo te llamas? ")\nprint("Hola, " + nombre)'>Copiar código</button></div><pre><code>nombre = input("¿Cómo te llamas? ")
+print("Hola, " + nombre)</code></pre><div class="output"><div class="output-label">EJEMPLO DE EJECUCIÓN</div>¿Cómo te llamas? Ana<br>Hola, Ana</div></div>
+<p>Para pedir una edad y usarla en cálculos, convertimos el texto a entero:</p>
+<div class="codebox"><div class="codehead"><span>Leer un número</span><button class="btn" data-copy='edad = int(input("¿Cuántos años tienes? "))\nprint("El próximo año tendrás:", edad + 1)'>Copiar código</button></div><pre><code>edad = int(input("¿Cuántos años tienes? "))
+print("El próximo año tendrás:", edad + 1)</code></pre><div class="output"><div class="output-label">EJEMPLO</div>¿Cuántos años tienes? 21<br>El próximo año tendrás: 22</div></div>
+</section>
+
+<section id="quiz">
+<div class="section-head"><div class="num">06</div><div><h2>Laboratorio interactivo</h2><p class="sub">Comprueba si reconoces variables y tipos.</p></div></div>
+<form id="quizForm">
+<div class="quiz-q" data-answer="1"><h3>1. ¿Qué valor se imprime?</h3><div class="codebox"><pre><code>puntos = 10
+puntos = 15
+print(puntos)</code></pre></div><div class="options"><label class="option"><input type="radio" name="q1" value="0"> 10</label><label class="option"><input type="radio" name="q1" value="1"> 15</label><label class="option"><input type="radio" name="q1" value="2"> 25</label></div><div class="feedback">La segunda asignación actualiza el valor de puntos a 15.</div></div>
+<div class="quiz-q" data-answer="2"><h3>2. ¿Cuál de estos valores es de tipo <code>str</code>?</h3><div class="options"><label class="option"><input type="radio" name="q2" value="0"> 42</label><label class="option"><input type="radio" name="q2" value="1"> 2.5</label><label class="option"><input type="radio" name="q2" value="2"> "42"</label></div><div class="feedback">El valor "42" está entre comillas, por eso es una cadena de texto.</div></div>
+<div class="quiz-q" data-answer="0"><h3>3. ¿Qué tipo devuelve <code>input()</code> por defecto?</h3><div class="options"><label class="option"><input type="radio" name="q3" value="0"> str</label><label class="option"><input type="radio" name="q3" value="1"> int</label><label class="option"><input type="radio" name="q3" value="2"> bool</label></div><div class="feedback">input() devuelve texto. Si necesitas un número, debes convertirlo.</div></div>
+<div class="quiz-q" data-answer="1"><h3>4. ¿Cuál es un nombre de variable válido?</h3><div class="options"><label class="option"><input type="radio" name="q4" value="0"> 2nombre</label><label class="option"><input type="radio" name="q4" value="1"> nombre_2</label><label class="option"><input type="radio" name="q4" value="2"> nombre completo</label></div><div class="feedback">Un identificador puede contener letras, números y guion bajo, pero no empezar con número ni contener espacios.</div></div>
+<button class="btn primary" type="submit">Comprobar respuestas</button> <button class="btn" type="button" id="resetQuiz">Reiniciar</button>
+</form><div class="score" id="score" aria-live="polite"></div>
+</section>
+
+<section id="reto">
+<div class="section-head"><div class="num">07</div><div><h2>Reto práctico: perfil de estudiante</h2><p class="sub">Declara variables de varios tipos y muestra sus valores.</p></div></div>
+<p>Completa o modifica el programa. El objetivo es crear un pequeño perfil con nombre, edad, estatura y si estudia Python.</p>
+<div class="challenge-grid"><div><label for="editor"><strong>Editor de práctica</strong></label><textarea id="editor" spellcheck="false">nombre = "Tu nombre"
+edad = 18
+estatura = 1.70
+estudia_python = True
+
+print(nombre)
+print(edad)
+print(estatura)
+print(estudia_python)</textarea><div class="editor-actions"><button class="btn primary" id="runBtn" type="button">▶ Simular salida</button><button class="btn" id="hintBtn" type="button">Mostrar pista</button><button class="btn" id="copyEditor" type="button">Copiar código</button></div><div class="hint" id="hint">Pista: usa comillas para el nombre, un entero para la edad, un decimal con punto para la estatura y True o False sin comillas para el booleano.</div></div><div><strong>Salida simulada</strong><div class="preview" id="preview" aria-live="polite">Tu nombre<br>18<br>1.7<br>True</div><p class="sub" style="font-size:.85rem">Simulador limitado para ejemplos de asignación simples y print(variable). No ejecuta Python real.</p></div></div>
+<div class="callout gold"><strong>Reto extra:</strong> crea una variable <code>ciudad</code> con tu ciudad y otra llamada <code>meta</code> con una meta de aprendizaje. Imprime ambas.</div>
+</section>
+
+<section id="profesor">
+<div class="section-head"><div class="num">08</div><div><h2>Guía rápida para el profesor</h2><p class="sub">Una secuencia didáctica para una clase de 60 minutos.</p></div></div>
+<div class="map">
+<div class="map-card"><h3>10 min · Analogía</h3><p>Explica la variable como una etiqueta asociada a un valor.</p></div>
+<div class="map-card"><h3>15 min · Demostración</h3><p>Crea variables y cambia sus valores en vivo.</p></div>
+<div class="map-card"><h3>15 min · Tipos</h3><p>Compara int, float, str y bool; usa type().</p></div>
+<div class="map-card"><h3>15 min · Práctica</h3><p>Los alumnos construyen su perfil de estudiante.</p></div>
+<div class="map-card"><h3>5 min · Cierre</h3><p>Pregunta qué devuelve input() y cómo convertir texto a número.</p></div>
+<div class="map-card"><h3>Pregunta de salida</h3><p>¿Por qué "18" y 18 no son el mismo tipo de dato?</p></div>
+</div>
+<h3>Objetivos de aprendizaje</h3><div class="checklist" id="objectives">
+<label><input type="checkbox"> Puedo explicar qué es una variable.</label>
+<label><input type="checkbox"> Puedo asignar y actualizar valores.</label>
+<label><input type="checkbox"> Distingo int, float, str y bool.</label>
+<label><input type="checkbox"> Puedo usar type() para inspeccionar un valor.</label>
+<label><input type="checkbox"> Sé que input() devuelve texto.</label>
+<label><input type="checkbox"> Puedo convertir texto numérico con int() o float().</label>
+</div>
+</section>
+
+<section id="resumen">
+<div class="section-head"><div class="num">✓</div><div><h2>Resumen y progreso</h2><p class="sub">Consolida estos conceptos antes de avanzar.</p></div></div>
+<ul>
+<li>Una <strong>variable</strong> es un nombre asociado a un valor.</li>
+<li><code>=</code> se utiliza para asignar un valor.</li>
+<li><code>int</code> representa enteros; <code>float</code>, decimales; <code>str</code>, texto; <code>bool</code>, verdadero o falso.</li>
+<li><code>type()</code> permite consultar el tipo de un valor.</li>
+<li><code>input()</code> devuelve texto; convierte con <code>int()</code> o <code>float()</code> cuando corresponda.</li>
+<li>Usa nombres descriptivos, como <code>precio_total</code>.</li>
+</ul>
+<div class="callout"><strong>Próxima clase:</strong> operadores y expresiones. Aprenderás a realizar cálculos, comparar valores y combinar condiciones.</div>
+<button class="btn primary" id="finishBtn" type="button">Marcar clase como completada ✓</button><p class="sub" id="finishMsg" aria-live="polite"></p>
+</section>
+<footer>Python desde Cero · Material didáctico interactivo · Clase 2<br>Comprender los datos es aprender a controlar la información.</footer>
+</main></div>
+<div class="toast" id="toast" role="status">Listo</div>
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const toast=msg=>{const e=$('#toast');e.textContent=msg;e.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>e.classList.remove('show'),1800)};
+$('#startBtn').addEventListener('click',()=>$('#concepto').scrollIntoView({behavior:'smooth'}));
+$('#printBtn').addEventListener('click',()=>window.print());
+$('#themeBtn').addEventListener('click',()=>{document.body.classList.toggle('light');$('#themeBtn').textContent=document.body.classList.contains('light')?'☾ Tema':'☼ Tema'});
+window.addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-innerHeight;$('#progress').style.width=(max>0?scrollY/max*100:0)+'%'});
+const links=$$('#toc a');const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-20% 0px -70% 0px'});
+$$('main section, #inicio').forEach(s=>observer.observe(s));
+async function copyText(text){try{await navigator.clipboard.writeText(text);toast('Código copiado')}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast('Código copiado')}catch(_){toast('No se pudo copiar automáticamente')}ta.remove()}}
+$$('[data-copy]').forEach(b=>b.addEventListener('click',()=>copyText(b.dataset.copy.replace(/\\n/g,'\n'))));
+$('#copyEditor').addEventListener('click',()=>copyText($('#editor').value));
+$('#quizForm').addEventListener('submit',e=>{e.preventDefault();const qs=$$('.quiz-q');let score=0,answered=0;qs.forEach(q=>{const selected=$('input:checked',q),correct=Number(q.dataset.answer),f=$('.feedback',q);f.classList.add('show');if(selected){answered++;if(Number(selected.value)===correct){score++;f.style.cssText='background:#172b28;color:#bbf7d0'}else{f.style.cssText='background:#332319;color:#fed7aa'}}else{f.style.cssText='background:#332319;color:#fed7aa'}});const b=$('#score');b.classList.add('show');b.innerHTML=`<strong>Resultado: ${score} de ${qs.length}</strong><br>${answered<qs.length?'Contestaste '+answered+' de '+qs.length+'. Completa las pendientes.':score===qs.length?'¡Excelente! Dominas las ideas esenciales.':'Revisa las explicaciones y vuelve a intentarlo.'}`;b.scrollIntoView({behavior:'smooth',block:'nearest'})});
+$('#resetQuiz').addEventListener('click',()=>{$('#quizForm').reset();$$('.feedback').forEach(f=>{f.classList.remove('show');f.style=''});$('#score').classList.remove('show');$('#score').textContent=''});
+function parseLiteral(raw){raw=raw.trim();if(/^(['"]).*\1$/.test(raw))return raw.slice(1,-1).replace(/\\n/g,'\n');if(raw==='True')return 'True';if(raw==='False')return 'False';if(/^-?\d+$/.test(raw))return String(Number(raw));if(/^-?\d+\.\d+$/.test(raw))return String(Number(raw));return null}
+function simulate(src){const vars={},out=[],lines=src.split(/\r?\n/);for(let i=0;i<lines.length;i++){let line=lines[i].trim();if(!line||line.startsWith('#'))continue;let m=line.match(/^([A-Za-z_]\w*)\s*=\s*(.+)$/);if(m){const v=parseLiteral(m[2]);if(v===null)return{error:`Línea ${i+1}: usa por ahora una asignación sencilla, por ejemplo nombre = "Ana" o edad = 20.`};vars[m[1]]=v;continue}m=line.match(/^print\(\s*([A-Za-z_]\w*)\s*\)$/);if(m){if(!(m[1] in vars))return{error:`Línea ${i+1}: la variable "${m[1]}" aún no está definida.`};out.push(vars[m[1]]);continue}m=line.match(/^print\(\s*(["']).*\1\s*\)$/);if(m){out.push(m[0].slice(7,-2));continue}return{error:`Línea ${i+1}: este simulador solo admite asignaciones simples y print(variable).`}}return{out:out.join('\n')}}
+$('#runBtn').addEventListener('click',()=>{const r=simulate($('#editor').value);$('#preview').textContent=r.error||r.out||'(Sin salida)';toast(r.error?'Revisa el código':'Simulación terminada')});
+$('#hintBtn').addEventListener('click',()=>$('#hint').classList.toggle('show'));
+$('#finishBtn').addEventListener('click',()=>{$('#finishMsg').textContent='¡Clase completada! Repasa los objetivos y practica con tus propios datos antes de continuar.';$('#finishBtn').textContent='Clase completada ✓';$('#finishBtn').disabled=true});
+</script>
+</body></html>
